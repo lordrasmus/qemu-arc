@@ -196,6 +196,8 @@ static void initialize_debug_host(CPUDebug *s)
     s->info.print_insn = print_insn_hppa;
 #elif defined(__loongarch__)
     s->info.print_insn = print_insn_loongarch;
+#elif defined(__arc__)
+    s->info.print_insn = print_insn_arc;
 #endif
 }
 

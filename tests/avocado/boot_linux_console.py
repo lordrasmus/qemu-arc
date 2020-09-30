@@ -1244,6 +1244,17 @@ class BootLinuxConsole(LinuxKernelTest):
         console_pattern = 'Kernel command line: %s' % kernel_command_line
         self.wait_for_console_pattern(console_pattern)
 
+    def do_test_arc(self, kernel_name, console=0):
+        tar_url = ('https://github.com/cupertinomiranda/arc-qemu-resources/archive/master.tar.gz')
+        file_path = self.fetch_asset(tar_url)
+        archive.extract(file_path, self.workdir)
+
+        self.vm.set_console(console_index=console)
+        self.vm.add_args('-kernel',
+                         self.workdir + '/' + kernel_name)
+        self.vm.launch()
+        self.wait_for_console_pattern('QEMU advent calendar')
+
     def test_m68k_q800(self):
         """
         :avocado: tags=arch:m68k
@@ -1445,3 +1456,69 @@ class BootLinuxConsole(LinuxKernelTest):
         """
         tar_hash = '49e88d9933742f0164b60839886c9739cb7a0d34'
         self.do_test_advcal_2018('02', tar_hash, 'santas-sleigh-ride.elf')
+
+
+    def virtarc_base_test(self):
+        self.vm.add_args('-nographic')
+        self.vm.add_args('-no-reboot')
+        self.vm.add_args('-m', '3G')
+        self.vm.add_args('-global', 'cpu.freq_hz=50000000')
+
+        self.vm.set_console()
+
+        kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=ttyS0'
+        self.vm.add_args('-append', kernel_command_line)
+
+    timeout = 90
+    def test_arc64_virt(self):
+        """
+        :avocado: tags=arch:arc64
+        :avocado: tags=machine:virt
+        """
+        self.virtarc_base_test()
+        self.vm.add_args("-cpu","hs6x")
+
+        hash = 'a6703102d03ea4747f7d63bd5ade4dfda3cc16b1'
+        url = "https://raw.githubusercontent.com/foss-for-synopsys-dwc-arc-processors/arc-gnu-toolchain/master/test-qemu/images/Linux/Arc64/loader"
+        kernel_path_dnld = self.fetch_asset(url, hash)
+        self.vm.add_args('-kernel', kernel_path_dnld)
+
+        self.vm.launch()
+
+        wait_for_console_pattern(self, "Welcome to Buildroot")
+
+    timeout = 90
+    def test_arc32_virt(self):
+        """
+        :avocado: tags=arch:arc
+        :avocado: tags=machine:virt
+        """
+        self.virtarc_base_test()
+        self.vm.add_args("-cpu","hs5x")
+
+        hash = 'ad639435610a0887f1611206ef1aca927ff29379'
+        url = "https://raw.githubusercontent.com/foss-for-synopsys-dwc-arc-processors/arc-gnu-toolchain/master/test-qemu/images/Linux/Arc32/loader"
+        kernel_path_dnld = self.fetch_asset(url, hash)
+        self.vm.add_args('-kernel', kernel_path_dnld)
+
+        self.vm.launch()
+
+        wait_for_console_pattern(self, "Welcome to Buildroot")
+
+    timeout = 90
+    def test_arc_virt(self):
+        """
+        :avocado: tags=arch:arc
+        :avocado: tags=machine:virt
+        """
+        self.virtarc_base_test()
+        self.vm.add_args("-cpu","archs")
+
+        hash = '82a910b045467b9a644a8ad5978d5e29a526dbde'
+        url = "https://raw.githubusercontent.com/foss-for-synopsys-dwc-arc-processors/arc-gnu-toolchain/master/test-qemu/images/Linux/Arc/loader"
+        kernel_path_dnld = self.fetch_asset(url, hash)
+        self.vm.add_args('-kernel', kernel_path_dnld)
+
+        self.vm.launch()
+
+        wait_for_console_pattern(self, "Welcome to the HAPS Development")

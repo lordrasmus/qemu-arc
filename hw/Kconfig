@@ -45,6 +45,7 @@ source xen/Kconfig
 source watchdog/Kconfig
 
 # arch Kconfig
+source arc/Kconfig
 source arm/Kconfig
 source alpha/Kconfig
 source avr/Kconfig
