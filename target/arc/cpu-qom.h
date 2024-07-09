@@ -24,11 +24,8 @@
 
 #define TYPE_ARC_CPU            "arc-cpu"
 
-typedef struct ArchCPU ARCCPU;
-typedef struct ARCCPUClass ARCCPUClass;
 typedef struct CPUArchState CPUARCState;
-DECLARE_OBJ_CHECKERS(ARCCPU, ARCCPUClass,
-                     ARC_CPU, TYPE_ARC_CPU)
+OBJECT_DECLARE_CPU_TYPE(ARCCPU, ARCCPUClass, ARC_CPU)
 
 /*
  *  ARCCPUClass:
@@ -37,13 +34,13 @@ DECLARE_OBJ_CHECKERS(ARCCPU, ARCCPUClass,
  *
  *  A ARC CPU model.
  */
-typedef struct ARCCPUClass {
+struct ARCCPUClass {
     /*< private >*/
     CPUClass parent_class;
     /*< public >*/
 
     DeviceRealize parent_realize;
     DeviceReset parent_reset;
-} ARCCPUClass;
+};
 
 #endif

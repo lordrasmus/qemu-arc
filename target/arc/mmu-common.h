@@ -80,8 +80,6 @@ struct mem_exception {
   (EXCP).parameter = P; \
 }
 
-struct CPUARCState;
-
 /* ARCv2 MMU functions */
 void arc_mmu_init_v3(CPUARCState *env);
 bool
