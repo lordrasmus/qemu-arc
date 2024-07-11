@@ -25,7 +25,6 @@
 #define TARGET_PAGE_BITS            12
 #define TARGET_PHYS_ADDR_SPACE_BITS 32
 #define TARGET_VIRT_ADDR_SPACE_BITS 32
-#define NB_MMU_MODES                3
 #endif
 
 #ifdef TARGET_ARC64
@@ -33,7 +32,6 @@
 #define TARGET_PAGE_BITS            12
 #define TARGET_PHYS_ADDR_SPACE_BITS 48
 #define TARGET_VIRT_ADDR_SPACE_BITS 64
-#define NB_MMU_MODES                3
 #endif
 
 #endif
