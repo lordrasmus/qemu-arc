@@ -755,7 +755,7 @@ static int mmuv6_decide_action(const CPUARCState *env, target_ulong addr, int mm
 
 #endif
 
-static void QEMU_NORETURN raise_mem_exception(
+static G_NORETURN void raise_mem_exception(
         CPUState *cs, target_ulong addr, uintptr_t host_pc,
         struct mem_exception *excp)
 {
