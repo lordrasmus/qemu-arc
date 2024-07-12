@@ -473,7 +473,7 @@ static const char *get_auxreg_v3(const struct arc_opcode *opcode,
             continue;
         }
 
-        if (auxr->subclass != NONE) {
+        if (auxr->subclass != ARC_INSN_SUBCLASS_NONE) {
             return NULL;
         }
 

@@ -22,7 +22,7 @@
 #include "qemu/osdep.h"
 #include "translate.h"
 #include "target/arc/semfunc.h"
-#include "exec/gen-icount.h"
+#include "tcg/tcg-temp-internal.h"
 #include "tcg/tcg-op-gvec.h"
 
 void
@@ -627,8 +627,8 @@ void
 arc_gen_except_no_wait_instructions(DisasCtxt *ctx)
 {
     TCGLabel *done = gen_new_label();
-    TCGv in_kernel_mode = tcg_temp_local_new();
-    TCGv usermode_sleep_enabled = tcg_temp_local_new();
+    TCGv in_kernel_mode = tcg_temp_new();
+    TCGv usermode_sleep_enabled = tcg_temp_new();
 
     inKernelMode(in_kernel_mode);
     getUsermodeSleep(usermode_sleep_enabled);
@@ -654,7 +654,7 @@ arc_gen_VPACK2HL(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
   TCGv b_h0 = tcg_temp_new();
   TCGv c_h0 = tcg_temp_new();
 
-  TCGv cc_temp = tcg_temp_local_new();
+  TCGv cc_temp = tcg_temp_new();
   TCGLabel *cc_done = gen_new_label();
 
   /* Conditional execution */
@@ -688,7 +688,7 @@ arc_gen_VPACK2HM(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
   TCGv b_h1 = tcg_temp_new();
   TCGv c_h1 = tcg_temp_new();
 
-  TCGv cc_temp = tcg_temp_local_new();
+  TCGv cc_temp = tcg_temp_new();
   TCGLabel *cc_done = gen_new_label();
 
   /* Conditional execution */

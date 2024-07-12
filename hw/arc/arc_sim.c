@@ -103,7 +103,7 @@ static void arc_sim_init(MachineState *machine)
                            1024);
     memory_region_add_subregion(get_system_memory(), 0xf0000000, system_io);
 
-    if (semihosting_enabled()) {
+    if (semihosting_enabled(false)) {
         if (serial_hd(0)) {
             arc_sim_open_console(serial_hd(0));
         }

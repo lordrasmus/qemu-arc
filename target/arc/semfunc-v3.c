@@ -72,36 +72,36 @@ int
 arc_gen_FLAG (DisasCtxt *ctx, TCGv src)
 {
   int ret = DISAS_UPDATE;
-  TCGv temp_13 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_14 = tcg_temp_local_new();
-  TCGv status32 = tcg_temp_local_new();
-  TCGv temp_16 = tcg_temp_local_new();
-  TCGv temp_15 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_18 = tcg_temp_local_new();
-  TCGv temp_17 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_19 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_20 = tcg_temp_local_new();
-  TCGv temp_22 = tcg_temp_local_new();
-  TCGv temp_21 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_23 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
-  TCGv temp_24 = tcg_temp_local_new();
-  TCGv temp_25 = tcg_temp_local_new();
-  TCGv temp_26 = tcg_temp_local_new();
-  TCGv temp_27 = tcg_temp_local_new();
-  TCGv temp_28 = tcg_temp_local_new();
+  TCGv temp_13 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_14 = tcg_temp_new();
+  TCGv status32 = tcg_temp_new();
+  TCGv temp_16 = tcg_temp_new();
+  TCGv temp_15 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_18 = tcg_temp_new();
+  TCGv temp_17 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_19 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_20 = tcg_temp_new();
+  TCGv temp_22 = tcg_temp_new();
+  TCGv temp_21 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_23 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
+  TCGv temp_24 = tcg_temp_new();
+  TCGv temp_25 = tcg_temp_new();
+  TCGv temp_26 = tcg_temp_new();
+  TCGv temp_27 = tcg_temp_new();
+  TCGv temp_28 = tcg_temp_new();
   getCCFlag(temp_13);
   tcg_gen_mov_tl(cc_flag, temp_13);
   TCGLabel *done_1 = gen_new_label();
@@ -267,38 +267,38 @@ int
 arc_gen_KFLAG (DisasCtxt *ctx, TCGv src)
 {
   int ret = DISAS_UPDATE;
-  TCGv temp_13 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_14 = tcg_temp_local_new();
-  TCGv status32 = tcg_temp_local_new();
-  TCGv temp_16 = tcg_temp_local_new();
-  TCGv temp_15 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_18 = tcg_temp_local_new();
-  TCGv temp_17 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_19 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_20 = tcg_temp_local_new();
-  TCGv temp_22 = tcg_temp_local_new();
-  TCGv temp_21 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_23 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
-  TCGv temp_24 = tcg_temp_local_new();
-  TCGv temp_25 = tcg_temp_local_new();
-  TCGv temp_26 = tcg_temp_local_new();
-  TCGv temp_27 = tcg_temp_local_new();
-  TCGv temp_28 = tcg_temp_local_new();
-  TCGv temp_29 = tcg_temp_local_new();
-  TCGv temp_30 = tcg_temp_local_new();
+  TCGv temp_13 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_14 = tcg_temp_new();
+  TCGv status32 = tcg_temp_new();
+  TCGv temp_16 = tcg_temp_new();
+  TCGv temp_15 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_18 = tcg_temp_new();
+  TCGv temp_17 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_19 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_20 = tcg_temp_new();
+  TCGv temp_22 = tcg_temp_new();
+  TCGv temp_21 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_23 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
+  TCGv temp_24 = tcg_temp_new();
+  TCGv temp_25 = tcg_temp_new();
+  TCGv temp_26 = tcg_temp_new();
+  TCGv temp_27 = tcg_temp_new();
+  TCGv temp_28 = tcg_temp_new();
+  TCGv temp_29 = tcg_temp_new();
+  TCGv temp_30 = tcg_temp_new();
   getCCFlag(temp_13);
   tcg_gen_mov_tl(cc_flag, temp_13);
   TCGLabel *done_1 = gen_new_label();
@@ -448,19 +448,19 @@ int
 arc_gen_ADD (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -539,16 +539,16 @@ int
 arc_gen_ADD1(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv lb = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv lc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_6 = tcg_temp_local_new();
-    TCGv temp_7 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv lb = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv lc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_6 = tcg_temp_new();
+    TCGv temp_7 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     se32to64(lb, b);
@@ -614,16 +614,16 @@ int
 arc_gen_ADD2(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv lb = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv lc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_6 = tcg_temp_local_new();
-    TCGv temp_7 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv lb = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv lc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_6 = tcg_temp_new();
+    TCGv temp_7 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     se32to64(lb, b);
@@ -690,16 +690,16 @@ int
 arc_gen_ADD3(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv lb = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv lc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_6 = tcg_temp_local_new();
-    TCGv temp_7 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv lb = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv lc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_6 = tcg_temp_new();
+    TCGv temp_7 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     se32to64(lb, b);
@@ -769,21 +769,21 @@ int
 arc_gen_ADC (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -868,21 +868,21 @@ int
 arc_gen_SBC (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -965,18 +965,18 @@ int
 arc_gen_NEG (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -1053,19 +1053,19 @@ int
 arc_gen_SUB (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -1144,20 +1144,20 @@ int
 arc_gen_SUB1 (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -1238,20 +1238,20 @@ int
 arc_gen_SUB2 (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -1332,20 +1332,20 @@ int
 arc_gen_SUB3 (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   se32to64(temp_4, b);
@@ -1434,21 +1434,21 @@ int
 arc_gen_MAX (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   se32to64(temp_6, b);
@@ -1546,21 +1546,21 @@ int
 arc_gen_MIN (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   se32to64(temp_6, b);
@@ -1648,18 +1648,18 @@ int
 arc_gen_CMP (DisasCtxt *ctx, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv v = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv v = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -1724,10 +1724,10 @@ int
 arc_gen_AND (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -1785,10 +1785,10 @@ int
 arc_gen_OR (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -1846,10 +1846,10 @@ int
 arc_gen_XOR (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -1907,10 +1907,10 @@ int
 arc_gen_MOV (DisasCtxt *ctx, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -1993,32 +1993,32 @@ int
 arc_gen_ASL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv la = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv la = tcg_temp_new();
   int f_flag;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_13 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_15 = tcg_temp_local_new();
-  TCGv temp_14 = tcg_temp_local_new();
-  TCGv t1 = tcg_temp_local_new();
-  TCGv temp_17 = tcg_temp_local_new();
-  TCGv temp_16 = tcg_temp_local_new();
-  TCGv t2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_18 = tcg_temp_local_new();
-  TCGv temp_19 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_13 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_15 = tcg_temp_new();
+  TCGv temp_14 = tcg_temp_new();
+  TCGv t1 = tcg_temp_new();
+  TCGv temp_17 = tcg_temp_new();
+  TCGv temp_16 = tcg_temp_new();
+  TCGv t2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_18 = tcg_temp_new();
+  TCGv temp_19 = tcg_temp_new();
   getCCFlag(temp_9);
   tcg_gen_mov_tl(cc_flag, temp_9);
   TCGLabel *done_1 = gen_new_label();
@@ -2147,20 +2147,20 @@ int
 arc_gen_ASR (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   int f_flag;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -2244,13 +2244,13 @@ int
 arc_gen_ASR8 (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2315,13 +2315,13 @@ int
 arc_gen_ASR16 (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2386,13 +2386,13 @@ int
 arc_gen_LSL16 (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2457,13 +2457,13 @@ int
 arc_gen_LSL8 (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2537,20 +2537,20 @@ int
 arc_gen_LSR (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   int f_flag;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -2634,13 +2634,13 @@ int
 arc_gen_LSR16 (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2705,13 +2705,13 @@ int
 arc_gen_LSR8 (DisasCtxt *ctx, TCGv b, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2775,11 +2775,11 @@ int
 arc_gen_BIC (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2840,13 +2840,13 @@ int
 arc_gen_BCLR (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -2919,16 +2919,16 @@ int
 arc_gen_BMSK (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
@@ -3014,17 +3014,17 @@ int
 arc_gen_BMSKN (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
@@ -3104,12 +3104,12 @@ int
 arc_gen_BSET (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3172,11 +3172,11 @@ int
 arc_gen_BXOR (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3239,18 +3239,18 @@ int
 arc_gen_ROL (DisasCtxt *ctx, TCGv src, TCGv n, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv ln = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv ln = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -3323,13 +3323,13 @@ int
 arc_gen_ROL8 (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3396,18 +3396,18 @@ int
 arc_gen_ROR (DisasCtxt *ctx, TCGv src, TCGv n, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv ln = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv ln = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -3480,13 +3480,13 @@ int
 arc_gen_ROR8 (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3553,18 +3553,18 @@ int
 arc_gen_RLC (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -3640,19 +3640,19 @@ int
 arc_gen_RRC (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -3727,13 +3727,13 @@ int
 arc_gen_SEXB (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3797,13 +3797,13 @@ int
 arc_gen_SEXH (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3867,10 +3867,10 @@ int
 arc_gen_EXTB (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3928,10 +3928,10 @@ int
 arc_gen_EXTH (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -3986,13 +3986,13 @@ int
 arc_gen_BTST (DisasCtxt *ctx, TCGv c, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4041,11 +4041,11 @@ int
 arc_gen_TST (DisasCtxt *ctx, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4096,22 +4096,22 @@ int
 arc_gen_XBFU (DisasCtxt *ctx, TCGv src2, TCGv src1, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv N = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv M = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv N = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv M = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4185,12 +4185,12 @@ int
 arc_gen_AEX (DisasCtxt *ctx, TCGv src2, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4230,11 +4230,9 @@ arc_gen_LR (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NORETURN;
 
-  if (tb_cflags(ctx->base.tb) & CF_USE_ICOUNT) {
-      gen_io_start();
-  }
+  translator_io_start(&ctx->base);
 
-  TCGv temp_1 = tcg_temp_local_new();
+  TCGv temp_1 = tcg_temp_new();
   readAuxReg(temp_1, src);
   tcg_gen_andi_tl(temp_1, temp_1, 0xffffffff);
   tcg_gen_mov_tl(dest, temp_1);
@@ -4340,7 +4338,7 @@ arc_gen_SETI(DisasCtxt *ctx, TCGv c)
     arc_gen_excp(ctx, EXCP_PRIVILEGEV, 0, 0);
 
     gen_set_label(cont);
-    one      = tcg_const_tl(1);
+    one      = tcg_constant_tl(1);
     c_4      = tcg_temp_new();
     c_5      = tcg_temp_new();
     ie       = tcg_temp_new();
@@ -4475,17 +4473,17 @@ int
 arc_gen_MPY(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv _b = tcg_temp_local_new();
-    TCGv _c = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv high_part = tcg_temp_local_new();
-    TCGv tmp1 = tcg_temp_local_new();
-    TCGv tmp2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv _b = tcg_temp_new();
+    TCGv _c = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv high_part = tcg_temp_new();
+    TCGv tmp1 = tcg_temp_new();
+    TCGv tmp2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     TCGLabel *done_1 = gen_new_label();
@@ -4551,12 +4549,12 @@ int
 arc_gen_MPYMU (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4617,11 +4615,11 @@ int
 arc_gen_MPYM (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4683,16 +4681,16 @@ int
 arc_gen_MPYU (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv _b = tcg_temp_local_new();
-  TCGv _c = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv high_part = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv _b = tcg_temp_new();
+  TCGv _c = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv high_part = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4761,14 +4759,14 @@ int
 arc_gen_MPYUW (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4833,19 +4831,19 @@ int
 arc_gen_MPYW (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -4925,18 +4923,18 @@ int
 arc_gen_DIV (DisasCtxt *ctx, TCGv src2, TCGv src1, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   getCCFlag(temp_9);
   tcg_gen_mov_tl(cc_flag, temp_9);
   TCGLabel *done_1 = gen_new_label();
@@ -5019,15 +5017,15 @@ int
 arc_gen_DIVU (DisasCtxt *ctx, TCGv src2, TCGv dest, TCGv src1)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -5104,18 +5102,18 @@ int
 arc_gen_REM (DisasCtxt *ctx, TCGv src2, TCGv src1, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   getCCFlag(temp_9);
   tcg_gen_mov_tl(cc_flag, temp_9);
   TCGLabel *done_1 = gen_new_label();
@@ -5198,15 +5196,15 @@ int
 arc_gen_REMU (DisasCtxt *ctx, TCGv src2, TCGv dest, TCGv src1)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -5283,7 +5281,7 @@ arc_gen_MAC(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     TCGv old_acc, mul_bc;
 
-    TCGv cc_temp = tcg_temp_local_new();
+    TCGv cc_temp = tcg_temp_new();
     TCGLabel *cc_done = gen_new_label();
 
     /* Conditional execution */
@@ -5331,7 +5329,7 @@ arc_gen_MACU(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     TCGv old_acc, mul_bc;
 
-    TCGv cc_temp = tcg_temp_local_new();
+    TCGv cc_temp = tcg_temp_new();
     TCGLabel *cc_done = gen_new_label();
 
     /* Conditional execution */
@@ -5377,7 +5375,7 @@ arc_gen_MACD(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     TCGv old_acc, mul_bc;
 
-    TCGv cc_temp = tcg_temp_local_new();
+    TCGv cc_temp = tcg_temp_new();
     TCGLabel *cc_done = gen_new_label();
 
     /* Conditional execution */
@@ -5425,7 +5423,7 @@ arc_gen_MACDU(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     TCGv old_acc, mul_bc;
 
-    TCGv cc_temp = tcg_temp_local_new();
+    TCGv cc_temp = tcg_temp_new();
     TCGLabel *cc_done = gen_new_label();
 
     /* Conditional execution */
@@ -5492,14 +5490,14 @@ int
 arc_gen_ABS (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   se32to64(temp_3, src);
   tcg_gen_mov_tl(lsrc, temp_3);
   tcg_gen_subfi_tl(alu, 0, lsrc);
@@ -5567,9 +5565,9 @@ int
 arc_gen_SWAP (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
   int f_flag;
   tcg_gen_shli_tl(tmp1, src, 16);
   tcg_gen_shri_tl(temp_1, src, 16);
@@ -5622,16 +5620,16 @@ int
 arc_gen_SWAPE (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv tmp3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv tmp3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   int f_flag;
   tcg_gen_shli_tl(temp_1, src, 24);
   tcg_gen_andi_tl(tmp1, temp_1, 4278190080);
@@ -5729,10 +5727,10 @@ int
 arc_gen_BI (DisasCtxt *ctx, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
   tcg_gen_shli_tl(temp_4, c, 2);
   nextInsnAddress(temp_3);
   tcg_gen_mov_tl(temp_2, temp_3);
@@ -5755,8 +5753,8 @@ arc_gen_BI (DisasCtxt *ctx, TCGv c)
 int
 arc_gen_BIH(DisasCtxt *ctx, TCGv c)
 {
-    TCGv target = tcg_temp_local_new();
-    TCGv addendum = tcg_temp_local_new();
+    TCGv target = tcg_temp_new();
+    TCGv addendum = tcg_temp_new();
 
     tcg_gen_movi_tl(target, ctx->npc);
     tcg_gen_shli_tl(addendum, c, 1);
@@ -5783,7 +5781,7 @@ arc_gen_B(DisasCtxt *ctx, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[0].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -5816,7 +5814,7 @@ arc_gen_BBIT0(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
     TCGv _c = tcg_temp_new();
-    TCGv msk = tcg_const_tl(1);
+    TCGv msk = tcg_constant_tl(1);
     TCGv bit = tcg_temp_new();
 
     update_delay_flag(ctx);
@@ -5855,7 +5853,7 @@ arc_gen_BBIT1(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
     TCGv _c = tcg_temp_new();
-    TCGv msk = tcg_const_tl(1);
+    TCGv msk = tcg_constant_tl(1);
     TCGv bit = tcg_temp_new();
 
     update_delay_flag(ctx);
@@ -5898,7 +5896,7 @@ arc_gen_BL(DisasCtxt *ctx, TCGv offset ATTRIBUTE_UNUSED)
     target_ulong target;
     target_ulong save_addr = ctx->npc;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -5954,7 +5952,7 @@ int
 arc_gen_J(DisasCtxt *ctx, TCGv target)
 {
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -5990,7 +5988,7 @@ arc_gen_JL(DisasCtxt *ctx, TCGv target)
     target_ulong save_addr = ctx->npc;
     TCGLabel *do_not_branch = gen_new_label();
     TCGv _target = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6066,19 +6064,19 @@ int
 arc_gen_SETEQ (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_7);
   tcg_gen_mov_tl(cc_flag, temp_7);
   TCGLabel *done_1 = gen_new_label();
@@ -6146,7 +6144,7 @@ arc_gen_BREQ(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     TCGLabel *do_not_branch = gen_new_label();
     TCGv b32 = tcg_temp_new();
     TCGv c32 = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6202,19 +6200,19 @@ int
 arc_gen_SETNE (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_7);
   tcg_gen_mov_tl(cc_flag, temp_7);
   TCGLabel *done_1 = gen_new_label();
@@ -6282,7 +6280,7 @@ arc_gen_BRNE(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     TCGLabel *do_not_branch = gen_new_label();
     TCGv b32 = tcg_temp_new();
     TCGv c32 = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6337,19 +6335,19 @@ int
 arc_gen_SETLT (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_7);
   tcg_gen_mov_tl(cc_flag, temp_7);
   TCGLabel *done_1 = gen_new_label();
@@ -6418,7 +6416,7 @@ arc_gen_BRLT(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     TCGLabel *do_not_branch = gen_new_label();
     TCGv b32 = tcg_temp_new();
     TCGv c32 = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6472,19 +6470,19 @@ int
 arc_gen_SETGE (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_7);
   tcg_gen_mov_tl(cc_flag, temp_7);
   TCGLabel *done_1 = gen_new_label();
@@ -6552,7 +6550,7 @@ arc_gen_BRGE(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     TCGLabel *do_not_branch = gen_new_label();
     TCGv b32 = tcg_temp_new();
     TCGv c32 = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6607,19 +6605,19 @@ int
 arc_gen_SETLE (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_7);
   tcg_gen_mov_tl(cc_flag, temp_7);
   TCGLabel *done_1 = gen_new_label();
@@ -6708,19 +6706,19 @@ int
 arc_gen_SETGT (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_7);
   tcg_gen_mov_tl(cc_flag, temp_7);
   TCGLabel *done_1 = gen_new_label();
@@ -6787,7 +6785,7 @@ arc_gen_BRLO(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     TCGLabel *do_not_branch = gen_new_label();
     TCGv b32 = tcg_temp_new();
     TCGv c32 = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6840,17 +6838,17 @@ int
 arc_gen_SETLO (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv cc_temp_1 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv cc_temp_1 = tcg_temp_new();
   getCCFlag(cc_flag);
   TCGLabel *done_cc = gen_new_label();
   tcg_gen_setcond_tl(TCG_COND_EQ, cc_temp_1, cc_flag, arc_true);
@@ -6913,7 +6911,7 @@ arc_gen_BRHS(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     TCGLabel *do_not_branch = gen_new_label();
     TCGv b32 = tcg_temp_new();
     TCGv c32 = tcg_temp_new();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -6966,17 +6964,17 @@ int
 arc_gen_SETHS (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv take_branch = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv cc_temp_1 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv take_branch = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv cc_temp_1 = tcg_temp_new();
   getCCFlag(cc_flag);
   TCGLabel *done_cc = gen_new_label();
   tcg_gen_setcond_tl(TCG_COND_EQ, cc_temp_1, cc_flag, arc_true);
@@ -7033,7 +7031,7 @@ int
 arc_gen_EX (DisasCtxt *ctx, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp = tcg_temp_local_new();
+  TCGv temp = tcg_temp_new();
   tcg_gen_mov_tl(temp, b);
   tcg_gen_atomic_xchg_tl(b, c, temp, ctx->mem_idx, MO_UL);
   tcg_temp_free(temp);
@@ -7095,7 +7093,7 @@ arc_gen_SCOND(DisasCtxt *ctx, TCGv addr, TCGv value)
 {
     int ret = DISAS_NEXT;
 #ifndef ARM_LIKE_LLOCK_SCOND
-    TCGv temp_4 = tcg_temp_local_new();
+    TCGv temp_4 = tcg_temp_new();
     gen_helper_scond(temp_4, cpu_env, addr, value);
     setZFlag(temp_4);
     tcg_temp_free(temp_4);
@@ -7136,7 +7134,7 @@ arc_gen_SCONDL(DisasCtxt *ctx, TCGv addr, TCGv value)
 {
     int ret = DISAS_NEXT;
 #ifndef ARM_LIKE_LLOCK_SCOND
-    TCGv temp_4 = tcg_temp_local_new();
+    TCGv temp_4 = tcg_temp_new();
     gen_helper_scondl(temp_4, cpu_env, addr, value);
     setZFlag(temp_4);
     tcg_temp_free(temp_4);
@@ -7581,21 +7579,21 @@ int
 arc_gen_LP (DisasCtxt *ctx, TCGv rd)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv lp_start_index = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv lp_end_index = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_13 = tcg_temp_local_new();
-  TCGv temp_12 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv lp_start_index = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv lp_end_index = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_13 = tcg_temp_new();
+  TCGv temp_12 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   TCGLabel *else_1 = gen_new_label();
   TCGLabel *done_1 = gen_new_label();
   getCCFlag(temp_3);
@@ -7663,7 +7661,7 @@ int
 arc_gen_NORM(DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     int ret = DISAS_NEXT;
-    TCGv psrc = tcg_temp_local_new();
+    TCGv psrc = tcg_temp_new();
     tcg_gen_mov_tl(psrc, src);
     tcg_gen_ext32s_tl(psrc, psrc);
     tcg_gen_clrsb_tl(dest, psrc);
@@ -7700,7 +7698,7 @@ int
 arc_gen_NORMH(DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     int ret = DISAS_NEXT;
-    TCGv psrc = tcg_temp_local_new();
+    TCGv psrc = tcg_temp_new();
     tcg_gen_andi_tl(psrc, src, 65535);
     tcg_gen_ext16s_tl(psrc, psrc);
     tcg_gen_clrsb_tl(dest, psrc);
@@ -7742,12 +7740,12 @@ int
 arc_gen_FLS(DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     int ret = DISAS_NEXT;
-    TCGv psrc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_3 = tcg_temp_local_new();
+    TCGv psrc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_3 = tcg_temp_new();
     tcg_gen_andi_tl(psrc, src, 0xffffffff);
     TCGLabel *else_1 = gen_new_label();
     TCGLabel *done_1 = gen_new_label();
@@ -7808,11 +7806,11 @@ int
 arc_gen_FFS(DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     int ret = DISAS_NEXT;
-    TCGv psrc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_3 = tcg_temp_local_new();
+    TCGv psrc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_3 = tcg_temp_new();
     tcg_gen_andi_tl(psrc, src, 0xffffffff);
     TCGLabel *else_1 = gen_new_label();
     TCGLabel *done_1 = gen_new_label();
@@ -7875,16 +7873,16 @@ int
 arc_gen_ADDL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -7958,16 +7956,16 @@ int
 arc_gen_ADD1L(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv lb = tcg_temp_local_new();
-    TCGv lc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_7 = tcg_temp_local_new();
-    TCGv temp_6 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv lb = tcg_temp_new();
+    TCGv lc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_7 = tcg_temp_new();
+    TCGv temp_6 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     tcg_gen_mov_tl(lb, b);
@@ -8030,16 +8028,16 @@ int
 arc_gen_ADD2L(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv lb = tcg_temp_local_new();
-    TCGv lc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_7 = tcg_temp_local_new();
-    TCGv temp_6 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv lb = tcg_temp_new();
+    TCGv lc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_7 = tcg_temp_new();
+    TCGv temp_6 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     tcg_gen_mov_tl(lb, b);
@@ -8106,16 +8104,16 @@ int
 arc_gen_ADD3L(DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
     int ret = DISAS_NEXT;
-    TCGv temp_3 = tcg_temp_local_new();
-    TCGv cc_flag = tcg_temp_local_new();
-    TCGv lb = tcg_temp_local_new();
-    TCGv lc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_7 = tcg_temp_local_new();
-    TCGv temp_6 = tcg_temp_local_new();
+    TCGv temp_3 = tcg_temp_new();
+    TCGv cc_flag = tcg_temp_new();
+    TCGv lb = tcg_temp_new();
+    TCGv lc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_7 = tcg_temp_new();
+    TCGv temp_6 = tcg_temp_new();
     getCCFlag(temp_3);
     tcg_gen_mov_tl(cc_flag, temp_3);
     tcg_gen_mov_tl(lb, b);
@@ -8184,19 +8182,19 @@ int
 arc_gen_ADCL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -8277,19 +8275,19 @@ int
 arc_gen_SBCL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -8369,16 +8367,16 @@ int
 arc_gen_SUBL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -8451,16 +8449,16 @@ int
 arc_gen_SUB1L (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -8533,16 +8531,16 @@ int
 arc_gen_SUB2L (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -8615,16 +8613,16 @@ int
 arc_gen_SUB3L (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   tcg_gen_mov_tl(lb, b);
@@ -8705,19 +8703,19 @@ int
 arc_gen_MAXL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   tcg_gen_mov_tl(lb, b);
@@ -8811,19 +8809,19 @@ int
 arc_gen_MINL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   tcg_gen_mov_tl(lb, b);
@@ -8903,15 +8901,15 @@ int
 arc_gen_CMPL (DisasCtxt *ctx, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -8968,10 +8966,10 @@ int
 arc_gen_ANDL (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9027,10 +9025,10 @@ int
 arc_gen_ORL (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9086,10 +9084,10 @@ int
 arc_gen_XORL (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9145,10 +9143,10 @@ int
 arc_gen_MOVL (DisasCtxt *ctx, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9201,11 +9199,11 @@ int
 arc_gen_MOVHL (DisasCtxt *ctx, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9277,19 +9275,19 @@ int
 arc_gen_ASLL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
   int f_flag;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -9378,20 +9376,20 @@ int
 arc_gen_ASRL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   int f_flag;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -9482,20 +9480,20 @@ int
 arc_gen_LSRL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lb = tcg_temp_local_new();
-  TCGv lc = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lb = tcg_temp_new();
+  TCGv lc = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   int f_flag;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -9577,11 +9575,11 @@ int
 arc_gen_BICL (DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9640,13 +9638,13 @@ int
 arc_gen_BCLRL (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9717,16 +9715,16 @@ int
 arc_gen_BMSKL (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
@@ -9810,17 +9808,17 @@ int
 arc_gen_BMSKNL (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
@@ -9898,12 +9896,12 @@ int
 arc_gen_BSETL (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -9964,11 +9962,11 @@ int
 arc_gen_BXORL (DisasCtxt *ctx, TCGv c, TCGv a, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -10028,18 +10026,18 @@ int
 arc_gen_ROLL (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -10109,13 +10107,13 @@ int
 arc_gen_SEXBL (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -10177,13 +10175,13 @@ int
 arc_gen_SEXHL (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -10242,13 +10240,13 @@ int
 arc_gen_SEXWL (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   int f_flag;
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
@@ -10307,13 +10305,13 @@ int
 arc_gen_BTSTL (DisasCtxt *ctx, TCGv c, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -10360,11 +10358,11 @@ int
 arc_gen_TSTL (DisasCtxt *ctx, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -10413,22 +10411,22 @@ int
 arc_gen_XBFUL (DisasCtxt *ctx, TCGv src2, TCGv src1, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv N = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv M = tcg_temp_local_new();
-  TCGv tmp1 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
-  TCGv tmp2 = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv N = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv M = tcg_temp_new();
+  TCGv tmp1 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
+  TCGv tmp2 = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -10501,12 +10499,12 @@ int
 arc_gen_AEXL (DisasCtxt *ctx, TCGv src2, TCGv b)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv tmp = tcg_temp_local_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv tmp = tcg_temp_new();
   getCCFlag(temp_3);
   tcg_gen_mov_tl(cc_flag, temp_3);
   TCGLabel *done_1 = gen_new_label();
@@ -10546,11 +10544,9 @@ arc_gen_LRL (DisasCtxt *ctx, TCGv dest, TCGv src)
 {
   int ret = DISAS_NORETURN;
 
-  if (tb_cflags(ctx->base.tb) & CF_USE_ICOUNT) {
-      gen_io_start();
-  }
+  translator_io_start(&ctx->base);
 
-  TCGv temp_1 = tcg_temp_local_new();
+  TCGv temp_1 = tcg_temp_new();
   readAuxReg(temp_1, src);
   tcg_gen_mov_tl(dest, temp_1);
   tcg_temp_free(temp_1);
@@ -10591,18 +10587,18 @@ int
 arc_gen_DIVL (DisasCtxt *ctx, TCGv src2, TCGv src1, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   getCCFlag(temp_9);
   tcg_gen_mov_tl(cc_flag, temp_9);
   TCGLabel *done_1 = gen_new_label();
@@ -10685,15 +10681,15 @@ int
 arc_gen_DIVUL (DisasCtxt *ctx, TCGv src2, TCGv dest, TCGv src1)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -10770,18 +10766,18 @@ int
 arc_gen_REML (DisasCtxt *ctx, TCGv src2, TCGv src1, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv temp_10 = tcg_temp_local_new();
-  TCGv temp_11 = tcg_temp_local_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv temp_10 = tcg_temp_new();
+  TCGv temp_11 = tcg_temp_new();
   getCCFlag(temp_9);
   tcg_gen_mov_tl(cc_flag, temp_9);
   TCGLabel *done_1 = gen_new_label();
@@ -10864,15 +10860,15 @@ int
 arc_gen_REMUL (DisasCtxt *ctx, TCGv src2, TCGv dest, TCGv src1)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -10949,13 +10945,13 @@ int
 arc_gen_ABSL (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv lsrc = tcg_temp_local_new();
-  TCGv alu = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
-  TCGv temp_5 = tcg_temp_local_new();
+  TCGv lsrc = tcg_temp_new();
+  TCGv alu = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
+  TCGv temp_5 = tcg_temp_new();
   tcg_gen_mov_tl(lsrc, src);
   tcg_gen_subfi_tl(alu, 0, lsrc);
   TCGLabel *else_1 = gen_new_label();
@@ -11019,8 +11015,8 @@ int
 arc_gen_SWAPL (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     const int ret = DISAS_NEXT;
-    TCGv hi = tcg_temp_local_new();
-    TCGv lo = tcg_temp_local_new();
+    TCGv hi = tcg_temp_new();
+    TCGv lo = tcg_temp_new();
 
     tcg_gen_shli_tl(lo, src, 32);
     tcg_gen_shri_tl(hi, src, 32);
@@ -11142,14 +11138,14 @@ int
 arc_gen_SETEQL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -11195,7 +11191,7 @@ arc_gen_BREQL(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -11237,14 +11233,14 @@ int
 arc_gen_SETNEL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -11290,7 +11286,7 @@ arc_gen_BRNEL(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -11332,14 +11328,14 @@ int
 arc_gen_SETLTL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -11386,7 +11382,7 @@ arc_gen_BRLTL(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -11427,19 +11423,19 @@ int
 arc_gen_SETGEL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv v = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv v = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -11490,7 +11486,7 @@ arc_gen_BRGEL(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -11532,19 +11528,19 @@ int
 arc_gen_SETLEL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv v = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv v = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -11611,19 +11607,19 @@ int
 arc_gen_SETGTL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv temp_5 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv v = tcg_temp_local_new();
-  TCGv temp_7 = tcg_temp_local_new();
-  TCGv temp_6 = tcg_temp_local_new();
-  TCGv p_b = tcg_temp_local_new();
-  TCGv temp_9 = tcg_temp_local_new();
-  TCGv temp_8 = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_3 = tcg_temp_local_new();
-  TCGv temp_4 = tcg_temp_local_new();
+  TCGv temp_5 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv v = tcg_temp_new();
+  TCGv temp_7 = tcg_temp_new();
+  TCGv temp_6 = tcg_temp_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv temp_9 = tcg_temp_new();
+  TCGv temp_8 = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_3 = tcg_temp_new();
+  TCGv temp_4 = tcg_temp_new();
   getCCFlag(temp_5);
   tcg_gen_mov_tl(cc_flag, temp_5);
   TCGLabel *done_1 = gen_new_label();
@@ -11674,7 +11670,7 @@ arc_gen_BRLOL(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -11715,12 +11711,12 @@ int
 arc_gen_SETLOL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv cc_temp_1 = tcg_temp_local_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv cc_temp_1 = tcg_temp_new();
   getCCFlag(cc_flag);
   TCGLabel *done_cc = gen_new_label();
   tcg_gen_setcond_tl(TCG_COND_EQ, cc_temp_1, cc_flag, arc_true);
@@ -11763,7 +11759,7 @@ arc_gen_BRHSL(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 {
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
-    TCGv cond = tcg_temp_local_new();
+    TCGv cond = tcg_temp_new();
 
     update_delay_flag(ctx);
 
@@ -11804,12 +11800,12 @@ int
 arc_gen_SETHSL (DisasCtxt *ctx, TCGv b, TCGv c, TCGv a)
 {
   int ret = DISAS_NEXT;
-  TCGv p_b = tcg_temp_local_new();
-  TCGv p_c = tcg_temp_local_new();
-  TCGv temp_2 = tcg_temp_local_new();
-  TCGv temp_1 = tcg_temp_local_new();
-  TCGv cc_flag = tcg_temp_local_new();
-  TCGv cc_temp_1 = tcg_temp_local_new();
+  TCGv p_b = tcg_temp_new();
+  TCGv p_c = tcg_temp_new();
+  TCGv temp_2 = tcg_temp_new();
+  TCGv temp_1 = tcg_temp_new();
+  TCGv cc_flag = tcg_temp_new();
+  TCGv cc_temp_1 = tcg_temp_new();
   getCCFlag(cc_flag);
   TCGLabel *done_cc = gen_new_label();
   tcg_gen_setcond_tl(TCG_COND_EQ, cc_temp_1, cc_flag, arc_true);
@@ -11850,7 +11846,7 @@ int
 arc_gen_EXL (DisasCtxt *ctx, TCGv b, TCGv c)
 {
   int ret = DISAS_NEXT;
-  TCGv temp = tcg_temp_local_new();
+  TCGv temp = tcg_temp_new();
   tcg_gen_mov_tl(temp, b);
   tcg_gen_atomic_xchg_tl(b, c, temp, ctx->mem_idx, MO_UQ);
   tcg_temp_free(temp);
@@ -12137,8 +12133,8 @@ int
 arc_gen_NORML (DisasCtxt *ctx, TCGv src, TCGv dest)
 {
   int ret = DISAS_NEXT;
-  TCGv psrc = tcg_temp_local_new();
-  TCGv i = tcg_temp_local_new();
+  TCGv psrc = tcg_temp_new();
+  TCGv i = tcg_temp_new();
   tcg_gen_mov_tl(psrc, src);
   ARC_HELPER(norml, i, psrc);
   tcg_gen_subfi_tl(dest, 63, i);
@@ -12189,12 +12185,12 @@ int
 arc_gen_FLSL(DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     int ret = DISAS_NEXT;
-    TCGv psrc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_5 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_3 = tcg_temp_local_new();
+    TCGv psrc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_5 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_3 = tcg_temp_new();
     tcg_gen_mov_tl(psrc, src);
     TCGLabel *else_1 = gen_new_label();
     TCGLabel *done_1 = gen_new_label();
@@ -12255,11 +12251,11 @@ int
 arc_gen_FFSL(DisasCtxt *ctx, TCGv src, TCGv dest)
 {
     int ret = DISAS_NEXT;
-    TCGv psrc = tcg_temp_local_new();
-    TCGv temp_1 = tcg_temp_local_new();
-    TCGv temp_2 = tcg_temp_local_new();
-    TCGv temp_4 = tcg_temp_local_new();
-    TCGv temp_3 = tcg_temp_local_new();
+    TCGv psrc = tcg_temp_new();
+    TCGv temp_1 = tcg_temp_new();
+    TCGv temp_2 = tcg_temp_new();
+    TCGv temp_4 = tcg_temp_new();
+    TCGv temp_3 = tcg_temp_new();
     tcg_gen_mov_tl(psrc, src);
     TCGLabel *else_1 = gen_new_label();
     TCGLabel *done_1 = gen_new_label();
@@ -12336,7 +12332,7 @@ arc_gen_BBIT0L(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
     TCGv _c = tcg_temp_new();
-    TCGv msk = tcg_const_tl(1);
+    TCGv msk = tcg_constant_tl(1);
     TCGv bit = tcg_temp_new();
 
     update_delay_flag(ctx);
@@ -12375,7 +12371,7 @@ arc_gen_BBIT1L(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
     const target_ulong target = ctx->pcl + ctx->insn.operands[2].value;
     TCGLabel *do_not_branch = gen_new_label();
     TCGv _c = tcg_temp_new();
-    TCGv msk = tcg_const_tl(1);
+    TCGv msk = tcg_constant_tl(1);
     TCGv bit = tcg_temp_new();
 
     update_delay_flag(ctx);
@@ -12404,7 +12400,7 @@ arc_gen_VPACK4HL(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
   TCGv c_h0 = tcg_temp_new();
   TCGv c_h2 = tcg_temp_new();
 
-  TCGv cc_temp = tcg_temp_local_new();
+  TCGv cc_temp = tcg_temp_new();
   TCGLabel *cc_done = gen_new_label();
 
   /* Conditional execution */
@@ -12443,7 +12439,7 @@ arc_gen_VPACK4HM(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
   TCGv c_h1 = tcg_temp_new();
   TCGv c_h3 = tcg_temp_new();
 
-  TCGv cc_temp = tcg_temp_local_new();
+  TCGv cc_temp = tcg_temp_new();
   TCGLabel *cc_done = gen_new_label();
 
   /* Conditional execution */
@@ -12480,7 +12476,7 @@ arc_gen_VPACK2WL(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
   TCGv b_w0 = tcg_temp_new();
   TCGv c_w0 = tcg_temp_new();
 
-  TCGv cc_temp = tcg_temp_local_new();
+  TCGv cc_temp = tcg_temp_new();
   TCGLabel *cc_done = gen_new_label();
 
   /* Conditional execution */
@@ -12511,7 +12507,7 @@ arc_gen_VPACK2WM(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)
   TCGv b_w1 = tcg_temp_new();
   TCGv c_w1 = tcg_temp_new();
 
-  TCGv cc_temp = tcg_temp_local_new();
+  TCGv cc_temp = tcg_temp_new();
   TCGLabel *cc_done = gen_new_label();
 
   /* Conditional execution */
@@ -13198,10 +13194,10 @@ arc_gen_FLD16(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 2; /* 16bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
-    TCGv new_dest = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
+    TCGv new_dest = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13237,9 +13233,9 @@ arc_gen_FST16(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 2; /* 32bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13272,10 +13268,10 @@ arc_gen_FLD32(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 0; /* 32bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
-    TCGv new_dest = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
+    TCGv new_dest = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13311,9 +13307,9 @@ arc_gen_FST32(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 0; /* 32bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13346,10 +13342,10 @@ arc_gen_FLD64(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 3; /* 64 bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
-    TCGv new_dest = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
+    TCGv new_dest = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13385,9 +13381,9 @@ arc_gen_FST64(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 3; /* 64 bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13422,12 +13418,12 @@ arc_gen_FLDD64(DisasCtxt *ctx, TCGv src1, TCGv src2, TCGv dest)
 {
     int ret = DISAS_NEXT;
     int ZZ = 3; /* 64 bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_src1 = tcg_temp_local_new();
-    TCGv l_src2 = tcg_temp_local_new();
-    TCGv new_dest = tcg_temp_local_new();
-    TCGv new_dest_hi = tcg_temp_local_new();
-    TCGv address_high = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_src1 = tcg_temp_new();
+    TCGv l_src2 = tcg_temp_new();
+    TCGv new_dest = tcg_temp_new();
+    TCGv new_dest_hi = tcg_temp_new();
+    TCGv address_high = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, src1, src2, ZZ);
 
@@ -13471,10 +13467,10 @@ arc_gen_FSTD64(DisasCtxt *ctx, TCGv data_reg, TCGv dest, TCGv offset)
 {
     int ret = DISAS_NEXT;
     int ZZ = 3; /* 64 bit */
-    TCGv address = tcg_temp_local_new();
-    TCGv l_dest = tcg_temp_local_new();
-    TCGv l_offset = tcg_temp_local_new();
-    TCGv address_high = tcg_temp_local_new();
+    TCGv address = tcg_temp_new();
+    TCGv l_dest = tcg_temp_new();
+    TCGv l_offset = tcg_temp_new();
+    TCGv address_high = tcg_temp_new();
 
     arc_gen_ldst_pre(ctx, address, dest, offset, ZZ);
 
@@ -13834,7 +13830,7 @@ int arc_gen_VF##TYPE##INS(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c) \
                                                                   \
     tcg_gen_brcondi_tl(TCG_COND_GE, b, mid_index, do_next_reg);   \
                                                                   \
-    TCGv size = tcg_const_tl(SIZE);                               \
+    TCGv size = tcg_constant_tl(SIZE);                               \
     gen_helper_vfins(a, cpu_env, a, b, c, size);                  \
     tcg_temp_free(size);                                          \
                                                                   \
@@ -13845,7 +13841,7 @@ int arc_gen_VF##TYPE##INS(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c) \
     tcg_gen_subi_tl(index, b, mid_index);                         \
                                                                   \
     TCGv reg = nextFPURegWithNull(ctx, a);                        \
-    TCGv size1 = tcg_const_tl(SIZE);                              \
+    TCGv size1 = tcg_constant_tl(SIZE);                              \
                                                                   \
     gen_helper_vfins(reg, cpu_env, reg, index, c, size1);         \
                                                                   \
@@ -13891,7 +13887,7 @@ int arc_gen_VF##TYPE##EXT(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c) \
                                                                   \
     tcg_gen_brcondi_tl(TCG_COND_GE, c, mid_index, do_next_reg);   \
                                                                   \
-    TCGv size = tcg_const_tl(SIZE);                               \
+    TCGv size = tcg_constant_tl(SIZE);                               \
     gen_helper_vfext(a, cpu_env, b, c, size);                     \
     tcg_temp_free(size);                                          \
                                                                   \
@@ -13902,7 +13898,7 @@ int arc_gen_VF##TYPE##EXT(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c) \
     tcg_gen_subi_tl(index, c, mid_index);                         \
                                                                   \
     TCGv reg = nextFPUReg(ctx, b);                                \
-    TCGv size1 = tcg_const_tl(SIZE);                              \
+    TCGv size1 = tcg_constant_tl(SIZE);                              \
                                                                   \
     gen_helper_vfext(a, cpu_env, reg, index, size1);              \
                                                                   \
@@ -13939,7 +13935,7 @@ int arc_gen_VF##TYPE##REP(DisasCtxt *ctx, TCGv a, TCGv b) \
 {                                                         \
     int ret = DISAS_NEXT;                                 \
                                                           \
-    TCGv size = tcg_const_tl(SIZE);                       \
+    TCGv size = tcg_constant_tl(SIZE);                       \
     gen_helper_vfrep(a, cpu_env, b, size);                \
                                                           \
     if (vfp_width > 64) {                                 \
@@ -14269,9 +14265,9 @@ VEC_FLOAT4_SCALARD(VFDNMSUBS, vfdnmsubs)
 int arc_gen_##NAME(DisasCtxt *ctx, TCGv a, TCGv b)                             \
 {                                                                              \
     int ret = DISAS_NEXT;                                                      \
-    TCGv zero = tcg_const_tl(0);                                               \
-    TCGv one = tcg_const_tl(1);                                                \
-    TCGv type = tcg_const_tl(TYPE);                                            \
+    TCGv zero = tcg_constant_tl(0);                                               \
+    TCGv one = tcg_constant_tl(1);                                                \
+    TCGv type = tcg_constant_tl(TYPE);                                            \
     if (vfp_width > 64) {                                                      \
         TCGv tmp = tcg_temp_new();                                             \
         TCGv na = nextFPURegWithNull(ctx, a);                                  \
@@ -14329,9 +14325,9 @@ VEC_SHUFFLE2_INSN(VFDEXCH, DEXCH)
 int arc_gen_##NAME(DisasCtxt *ctx, TCGv a, TCGv b, TCGv c)                    \
 {                                                                             \
     int ret = DISAS_NEXT;                                                     \
-    TCGv zero = tcg_const_tl(0);                                              \
-    TCGv one = tcg_const_tl(1);                                               \
-    TCGv type = tcg_const_tl(TYPE);                                           \
+    TCGv zero = tcg_constant_tl(0);                                              \
+    TCGv one = tcg_constant_tl(1);                                               \
+    TCGv type = tcg_constant_tl(TYPE);                                           \
     if (vfp_width > 64) {                                                     \
         TCGv tmp = tcg_temp_new();                                            \
         TCGv na = nextFPURegWithNull(ctx, a);                                 \

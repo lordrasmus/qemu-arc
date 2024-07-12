@@ -99,6 +99,16 @@ static void arc_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb
     env->pc = tb->pc;
 }
 
+static void arc_restore_state_to_opc(CPUState *cs,
+                                     const TranslationBlock *tb,
+                                     const uint64_t *data)
+{
+    ARCCPU *cpu = ARC_CPU(cs);
+    CPUARCState *env = &cpu->env;
+
+    env->pc = data[0];
+}
+
 static void arc_cpu_reset(DeviceState *dev)
 {
     CPUState *s = CPU(dev);
@@ -397,6 +407,7 @@ static const struct SysemuCPUOps arc_sysemu_ops = {
 static struct TCGCPUOps arc_tcg_ops = {
     .initialize = arc_translate_init,
     .synchronize_from_tb = arc_cpu_synchronize_from_tb,
+    .restore_state_to_opc = arc_restore_state_to_opc,
 
 #ifdef CONFIG_USER_ONLY
     .record_sigsegv = arc_cpu_record_sigsegv,

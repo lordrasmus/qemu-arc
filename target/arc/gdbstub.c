@@ -25,6 +25,7 @@
 #include "irq.h"
 #include "gdbstub.h"
 #include "mpu.h"
+#include "gdbstub/helpers.h"
 #include "exec/helper-proto.h"
 #include "fpu.h"
 

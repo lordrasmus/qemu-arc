@@ -761,7 +761,7 @@ static G_NORETURN void raise_mem_exception(
 {
     CPUARCState *env = &(ARC_CPU(cs)->env);
     if (excp->number != EXCP_IMMU_FAULT) {
-        cpu_restore_state(cs, host_pc, true);
+        cpu_restore_state(cs, host_pc);
     }
 
     env->efa = addr;

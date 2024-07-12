@@ -25,6 +25,7 @@
 #include "exec/helper-proto.h"
 #include "exec/cpu_ldst.h"
 #include "exec/ioport.h"
+#include "exec/tb-flush.h"
 #include "target/arc/regs.h"
 #include "mmu.h"
 #include "hw/arc/cpudevs.h"

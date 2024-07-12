@@ -852,9 +852,9 @@ void do_arc_semihosting(CPUARCState *env)
 
     case TARGET_SYS_gettimeofday:
     {
-        qemu_timeval tv;
+        struct timeval tv;
         struct timeval p;
-        uint32_t result = qemu_gettimeofday(&tv);
+        uint32_t result = gettimeofday(&tv, NULL);
         arc_semihosting_errno = errno;
         target_ulong base = regs[0];
         uint32_t sz = sizeof (struct timeval);

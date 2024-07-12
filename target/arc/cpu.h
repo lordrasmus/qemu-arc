@@ -184,7 +184,7 @@ FIELD(STATUS32, Zf,  11, 1)
     tcg_temp_free(temp); \
 }
 #define TCG_SET_STATUS_FIELD_IVALUE(STAT_REG, FIELD, IVALUE) { \
-    TCGv temp = tcg_const_tl((IVALUE << R_STATUS32_ ## FIELD ## _SHIFT) \
+    TCGv temp = tcg_constant_tl((IVALUE << R_STATUS32_ ## FIELD ## _SHIFT) \
                              & R_STATUS32_ ## FIELD ## _MASK); \
     tcg_gen_andi_tl(STAT_REG, STAT_REG, ~R_STATUS32_ ## FIELD ## _MASK); \
     tcg_gen_or_tl(STAT_REG, STAT_REG, temp); \
@@ -408,8 +408,8 @@ static inline int cpu_mmu_index(const CPUARCState *env, bool ifetch)
     return GET_STATUS_BIT(env->stat, Uf) != 0 ? 1 : 0;
 }
 
-static inline void cpu_get_tb_cpu_state(CPUARCState *env, target_ulong *pc,
-                                        target_ulong *cs_base,
+static inline void cpu_get_tb_cpu_state(CPUARCState *env, vaddr *pc,
+                                        uint64_t *cs_base,
                                         uint32_t *pflags)
 {
     *pc = env->pc;

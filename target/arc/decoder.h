@@ -156,7 +156,7 @@ typedef enum {
 
 /* Instruction Subclass.  */
 typedef enum {
-    NONE     = 0,
+    ARC_INSN_SUBCLASS_NONE     = 0,
     CVT      = (1U << 1),
     BTSCN    = (1U << 2),
     CD       = (1U << 3),

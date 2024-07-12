@@ -22,6 +22,7 @@
 #include "qemu/osdep.h"
 #include "translate.h"
 #include "qemu/bitops.h"
+#include "tcg/tcg-temp-internal.h"
 #include "tcg/tcg.h"
 #include "semfunc-helper.h"
 #include "translate.h"
