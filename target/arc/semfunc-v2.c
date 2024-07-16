@@ -5671,7 +5671,7 @@ arc_gen_BBIT1(DisasCtxt *ctx, TCGv b, TCGv c, TCGv offset ATTRIBUTE_UNUSED)
 
     /* if ((b & (1 << (c & 31))) != 0) */
     tcg_gen_andi_tl(_c, c, 31);
-    tcg_gen_shl_tl(msk, msk, _c);
+    tcg_gen_shl_tl(_c, msk, msk);
     tcg_gen_and_tl(bit, b, msk);
     tcg_gen_brcondi_tl(TCG_COND_EQ, bit, 0, do_not_branch);
 
