@@ -81,6 +81,13 @@ static void arc_cpu_set_pc(CPUState *cs, vaddr value)
     cpu->env.pc = value;
 }
 
+static vaddr arc_cpu_get_pc(CPUState *cs)
+{
+    ARCCPU *cpu = ARC_CPU(cs);
+
+    return cpu->env.pc;
+}
+
 static bool arc_cpu_has_work(CPUState *cs)
 {
     ARCCPU *cpu = ARC_CPU(cs);
@@ -436,6 +443,7 @@ static void arc_cpu_class_init(ObjectClass *oc, void *data)
     cc->has_work = arc_cpu_has_work;
     cc->dump_state = arc_cpu_dump_state;
     cc->set_pc = arc_cpu_set_pc;
+    cc->get_pc = arc_cpu_get_pc;
     cc->disas_set_info = arc_cpu_disas_set_info;
     cc->gdb_arch_name = arc_gdb_arch_name;
     cc->tcg_ops = &arc_tcg_ops;
