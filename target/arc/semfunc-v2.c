@@ -1828,7 +1828,12 @@ arc_gen_MOV(DisasCtxt *ctx, TCGv a, TCGv b)
     tcg_gen_andi_tl(temp_2, temp_2, 1);
     tcg_gen_brcond_tl(TCG_COND_EQ, temp_2, arc_true, done_1);
     tcg_gen_mov_tl(la, b);
-    tcg_gen_mov_tl(a, la);
+
+    // Do not save value for null instructions (destination is 0).
+    if (!(ctx->insn.operands[0].type & ARC_OPERAND_UNSIGNED && ctx->insn.operands[0].value == 0)) {
+        tcg_gen_mov_tl(a, la);
+    }
+
     f_flag = getFFlag ();
     if ((f_flag == true)) {
         setZFlag(la);
