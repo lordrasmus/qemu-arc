@@ -1586,12 +1586,20 @@ static void arc_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
     }
 }
 
+static void arc_tr_disas_log(const DisasContextBase *dcbase,
+                               CPUState *cpu, FILE *logfile)
+{
+    fprintf(logfile, "IN: %s\n", lookup_symbol(dcbase->pc_first));
+    target_disas(logfile, cpu, dcbase->pc_first, dcbase->tb->size);
+}
+
 static const TranslatorOps arc_translator_ops = {
     .init_disas_context = arc_tr_init_disas_context,
     .tb_start           = arc_tr_tb_start,
     .insn_start         = arc_tr_insn_start,
     .translate_insn     = arc_tr_translate_insn,
     .tb_stop            = arc_tr_tb_stop,
+    .disas_log          = arc_tr_disas_log,
 };
 
 /* generate intermediate code for basic block 'tb'. */
