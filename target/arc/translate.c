@@ -215,11 +215,6 @@ static void arc_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
 
     tcg_gen_insn_start(dc->base.pc_next);
     dc->cpc = dc->base.pc_next;
-
-    if (dc->base.num_insns == dc->base.max_insns &&
-        (dc->base.tb->cflags & CF_LAST_IO)) {
-        translator_io_start(&dc->base);
-    }
 }
 
 static int arc_gen_INVALID(const DisasContext *ctx)
