@@ -147,6 +147,7 @@
 
 /* Machine Trap Setup */
 #define CSR_MSTATUS         0x300
+#define CSR_MNSTATUS        0x744
 #define CSR_MISA            0x301
 #define CSR_MEDELEG         0x302
 #define CSR_MIDELEG         0x303
@@ -660,7 +661,7 @@ typedef enum {
 #define PGSHIFT             12
 
 /* Default Reset Vector address */
-#define DEFAULT_RSTVEC      0x1000
+#define DEFAULT_RSTVEC      0x0
 
 /* Exception causes */
 typedef enum RISCVException {

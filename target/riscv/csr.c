@@ -1502,6 +1502,19 @@ static RISCVException read_mstatus(CPURISCVState *env, int csrno,
     return RISCV_EXCP_NONE;
 }
 
+static RISCVException write_mnstatus(CPURISCVState *env, int csrno,
+                                     target_ulong val)
+{
+    return RISCV_EXCP_NONE;
+}
+
+static RISCVException read_mnstatus(CPURISCVState *env, int csrno,
+                                    target_ulong *val)
+{
+    *val = 0;
+    return RISCV_EXCP_NONE;
+}
+
 static bool validate_vm(CPURISCVState *env, target_ulong vm)
 {
     uint64_t mode_supported = riscv_cpu_cfg(env)->satp_mode.map;
@@ -4956,6 +4969,7 @@ riscv_csr_operations csr_ops[CSR_TABLE_SIZE] = {
     /* Machine Trap Setup */
     [CSR_MSTATUS]     = { "mstatus",    any,   read_mstatus, write_mstatus,
                           NULL,                read_mstatus_i128           },
+    [CSR_MNSTATUS]    = { "mnstatus",   any,   read_mnstatus, write_mnstatus },
     [CSR_MISA]        = { "misa",       any,   read_misa,    write_misa,
                           NULL,                read_misa_i128              },
     [CSR_MIDELEG]     = { "mideleg",    any,   NULL, NULL,   rmw_mideleg   },

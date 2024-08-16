@@ -68,11 +68,9 @@ static bool virt_aclint_allowed(void)
 }
 
 static const MemMapEntry virt_memmap[] = {
-    [VIRT_DEBUG] =        {        0x0,         0x100 },
-    [VIRT_MROM] =         {     0x1000,        0xf000 },
+    [VIRT_DRAM] =         {        0x0,      0x100000 },
     [VIRT_TEST] =         {   0x100000,        0x1000 },
     [VIRT_RTC] =          {   0x101000,        0x1000 },
-    [VIRT_CLINT] =        {  0x2000000,       0x10000 },
     [VIRT_ACLINT_SSWI] =  {  0x2F00000,        0x4000 },
     [VIRT_PCIE_PIO] =     {  0x3000000,       0x10000 },
     [VIRT_PLATFORM_BUS] = {  0x4000000,     0x2000000 },
@@ -87,7 +85,7 @@ static const MemMapEntry virt_memmap[] = {
     [VIRT_IMSIC_S] =      { 0x28000000, VIRT_IMSIC_MAX_SIZE },
     [VIRT_PCIE_ECAM] =    { 0x30000000,    0x10000000 },
     [VIRT_PCIE_MMIO] =    { 0x40000000,    0x40000000 },
-    [VIRT_DRAM] =         { 0x80000000,           0x0 },
+    [VIRT_CLINT] =        { 0xE0010000,       0x10000 },
 };
 
 /* PCIe high mmio is fixed for RV32 */
@@ -162,6 +160,7 @@ static void virt_flash_map(RISCVVirtState *s,
                     sysmem);
 }
 
+#if 0
 static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
                                 uint32_t irqchip_phandle)
 {
@@ -215,7 +214,9 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask",
                            0x1800, 0, 0, 0x7);
 }
+#endif
 
+#if 0
 static void create_fdt_socket_cpus(RISCVVirtState *s, int socket,
                                    char *clust_name, uint32_t *phandle,
                                    uint32_t *intc_phandles)
@@ -492,6 +493,7 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
                                        VIRT_PLATFORM_BUS_IRQ);
     }
 }
+#endif
 
 uint32_t imsic_num_bits(uint32_t count)
 {
@@ -504,6 +506,7 @@ uint32_t imsic_num_bits(uint32_t count)
     return ret;
 }
 
+#if 0
 static void create_fdt_one_imsic(RISCVVirtState *s, hwaddr base_addr,
                                  uint32_t *intc_phandles, uint32_t msi_phandle,
                                  bool m_mode, uint32_t imsic_guest_bits)
@@ -1053,6 +1056,7 @@ static void finalize_fdt(RISCVVirtState *s)
     create_fdt_rtc(s, virt_memmap, irq_mmio_phandle);
 }
 
+
 static void create_fdt(RISCVVirtState *s, const MemMapEntry *memmap)
 {
     MachineState *ms = MACHINE(s);
@@ -1094,6 +1098,7 @@ static void create_fdt(RISCVVirtState *s, const MemMapEntry *memmap)
     create_fdt_fw_cfg(s, memmap);
     create_fdt_pmu(s);
 }
+#endif
 
 static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
                                           DeviceState *irqchip,
@@ -1343,6 +1348,7 @@ static void virt_machine_done(Notifier *notifier, void *data)
     uint64_t kernel_entry = 0;
     BlockBackend *pflash_blk0;
 
+#if 0
     /*
      * An user provided dtb must include everything, including
      * dynamic sysbus devices. Our FDT needs to be finalized.
@@ -1350,6 +1356,7 @@ static void virt_machine_done(Notifier *notifier, void *data)
     if (machine->dtb == NULL) {
         finalize_fdt(s);
     }
+#endif
 
     /*
      * Only direct boot kernel is currently supported for KVM VM,
@@ -1398,6 +1405,7 @@ static void virt_machine_done(Notifier *notifier, void *data)
                                          kernel_start_addr, true, NULL);
     }
 
+#if 0
     fdt_load_addr = riscv_compute_fdt_addr(memmap[VIRT_DRAM].base,
                                            memmap[VIRT_DRAM].size,
                                            machine);
@@ -1408,6 +1416,7 @@ static void virt_machine_done(Notifier *notifier, void *data)
                               virt_memmap[VIRT_MROM].base,
                               virt_memmap[VIRT_MROM].size, kernel_entry,
                               fdt_load_addr);
+#endif
 
     /*
      * Only direct boot kernel is currently supported for KVM VM,
@@ -1430,7 +1439,9 @@ static void virt_machine_init(MachineState *machine)
     const MemMapEntry *memmap = virt_memmap;
     RISCVVirtState *s = RISCV_VIRT_MACHINE(machine);
     MemoryRegion *system_memory = get_system_memory();
+#if 0
     MemoryRegion *mask_rom = g_new(MemoryRegion, 1);
+#endif
     DeviceState *mmio_irqchip, *virtio_irqchip, *pcie_irqchip;
     int i, base_hartid, hart_count;
     int socket_count = riscv_socket_count(machine);
@@ -1574,11 +1585,13 @@ static void virt_machine_init(MachineState *machine)
     memory_region_add_subregion(system_memory, memmap[VIRT_DRAM].base,
         machine->ram);
 
+#if 0
     /* boot rom */
     memory_region_init_rom(mask_rom, NULL, "riscv_virt_board.mrom",
                            memmap[VIRT_MROM].size, &error_fatal);
     memory_region_add_subregion(system_memory, memmap[VIRT_MROM].base,
                                 mask_rom);
+#endif
 
     /*
      * Init fw_cfg. Must be done before riscv_load_fdt, otherwise the
@@ -1623,7 +1636,9 @@ static void virt_machine_init(MachineState *machine)
             exit(1);
         }
     } else {
+#if 0
         create_fdt(s, memmap);
+#endif
     }
 
     s->machine_done.notify = virt_machine_done;
@@ -1759,9 +1774,11 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
         }
     }
 
+#if 0
     if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
         create_fdt_virtio_iommu(s, pci_get_bdf(PCI_DEVICE(dev)));
     }
+#endif
 }
 
 static void virt_machine_class_init(ObjectClass *oc, void *data)
