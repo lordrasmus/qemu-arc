@@ -1,0 +1,4 @@
+config ARC_SANDBOX
+    bool
+    default y
+    depends on ARC
