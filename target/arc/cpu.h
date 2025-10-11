@@ -31,18 +31,26 @@ FIELD(STATUS32, AD, 19, 1); /* Disable alignment checking */
 FIELD(STATUS32, US, 20, 1); /* User sleep mode enable */
 FIELD(STATUS32, IE, 21, 1); /* Enable interrupts */
 
+#define ARC_REGISTER_NUMBER_GP          26
+#define ARC_REGISTER_NUMBER_FP          27
+#define ARC_REGISTER_NUMBER_SP          28
+#define ARC_REGISTER_NUMBER_ILINK       29
+#define ARC_REGISTER_NUMBER_BLINK       31
+#define ARC_REGISTER_NUMBER_ACCL        58
+#define ARC_REGISTER_NUMBER_ACCH        59
+#define ARC_REGISTER_NUMBER_LP_COUNT    60
+#define ARC_REGISTER_NUMBER_LIMM        62
+#define ARC_REGISTER_NUMBER_PCL         63
+
 typedef struct CPUArchState CPUArcState;
 
 struct CPUArchState {
-    /* Core register set */
-    target_ulong gpr[32];               /* r00-r31 */
-    target_ulong gpr_apex[26];          /* r32-r57 */
-    target_ulong reg_accl;              /* r58 */
-    target_ulong reg_acch;              /* r59 */
-    target_ulong reg_lp_count;          /* r60 */
-                                        /* r61 - reserved */
-    target_ulong reg_long_immediate;    /* r62 */
-    target_ulong reg_pcl;               /* r63 */
+    /* 
+     * Core register set. These registers are unused:
+     *     r32-r57 - APEX
+     *     r61 - reserved
+     */
+    target_ulong gpr[64];               /* r00-r63 */
 
     /* AUX registers. Current architectural state */
     target_ulong aux_lp_start;          /* 0x002 */
@@ -62,6 +70,9 @@ struct CPUArchState {
     target_ulong aux_ecr;               /* 0x403 */
     target_ulong aux_efa;               /* 0x404 */
 
+    /* Fields up to this point are cleared by a CPU reset */
+    struct {} end_reset_fields;
+
     /* AUX registers. Build Configuration Registers (BCRs) */
     target_ulong aux_bcr_ver;           /* 0x060 */
     target_ulong aux_bta_link_build;    /* 0x063 */
@@ -79,13 +90,7 @@ struct CPUArchState {
 
 }
 
-struct ArchCPU {
-    CPUState parent_obj;
-
-    CPUArcState env;
-};
-
-typedef struct ArcCPUConfig {
+struct ArcCPUConfig {
     bool halt_on_reset;
     bool intvbase_preset;
     uint8_t number_of_interrupts;
@@ -103,13 +108,21 @@ typedef struct ArcCPUConfig {
     uint8_t isa_mpy;
 };
 
+typedef struct ArcCPUConfig ArcCPUConfig;
+
+struct ArchCPU {
+    CPUState parent_obj;
+
+    ArcCPUConfig cfg;
+
+    CPUArcState env;
+};
+
 struct ArcCPUClass {
     CPUClass parent_class;
 
     DeviceRealize parent_realize;
     ResettablePhases parent_phases;
-
-    ArcCPUConfig *config;
 };
 
 #endif

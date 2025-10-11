@@ -1,4 +1,4 @@
-config ARC_SANDBOX
+config ARC_SIM
     bool
     default y
     depends on ARC
