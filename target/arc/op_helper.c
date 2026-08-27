@@ -335,8 +335,9 @@ void helper_rtie(CPUARCState *env)
         env->stat = env->stat_er;
         env->bta = env->erbta;
 
-        /* If returning to userland, restore SP.  */
-        if (GET_STATUS_BIT(env->stat, Uf)) {
+        /* If returning to userland, restore SP (ARCv2 only, see above). */
+        if (GET_STATUS_BIT(env->stat, Uf)
+            && !(env_archcpu(env)->family & ARC_OPCODE_ARCV1)) {
             switchSP(env);
         }
 

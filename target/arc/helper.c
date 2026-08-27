@@ -231,7 +231,14 @@ void arc_cpu_do_interrupt(CPUState *cs)
     /* 7. CPU is switched to kernel mode. */
     SET_STATUS_BIT(env->stat, Uf, 0);
 
-    if (GET_STATUS_BIT(env->stat_er, Uf)) {
+    /*
+     * ARCv2 swaps SP with AUX_USER_SP in hardware when entering from user
+     * mode.  ARCompact has no such register and no such swap -- its kernel
+     * switches stacks in software (SWITCH_TO_KERNEL_STK in the kernel's
+     * arch/arc/kernel/entry-compact.S), so doing it here corrupts SP.
+     */
+    if (GET_STATUS_BIT(env->stat_er, Uf)
+        && !(cpu->family & ARC_OPCODE_ARCV1)) {
         switchSP(env);
     }
 
