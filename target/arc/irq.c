@@ -579,6 +579,11 @@ bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
          * stale BTA.  ARCompact does not mirror the old U bit into Z the way
          * ARCv2 does; the handler reads STATUS32_L1 for that.
          */
+        if (GET_STATUS_BIT(env->stat, Uf)) {
+            /* Same reason as in set_status32(): the mmu index follows U. */
+            tlb_flush(cs);
+        }
+
         SET_STATUS_BIT(env->stat, Uf, 0);
         SET_STATUS_BIT(env->stat, Lf, 1);
         SET_STATUS_BIT(env->stat, DEf, 0);
@@ -606,6 +611,9 @@ bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
 bool arc_arcompact_rtie(CPUARCState *env)
 {
     if (GET_STATUS_BIT(env->stat, A2f)) {
+        if (GET_STATUS_BIT(env->stat_l2, Uf) != GET_STATUS_BIT(env->stat, Uf)) {
+            tlb_flush(env_cpu(env));
+        }
         env->stat = env->stat_l2;
         env->bta = env->bta_l2;
         env->pc = CPU_ILINK2(env);
@@ -618,6 +626,9 @@ bool arc_arcompact_rtie(CPUARCState *env)
     }
 
     if (GET_STATUS_BIT(env->stat, A1f)) {
+        if (GET_STATUS_BIT(env->stat_l1, Uf) != GET_STATUS_BIT(env->stat, Uf)) {
+            tlb_flush(env_cpu(env));
+        }
         env->stat = env->stat_l1;
         env->bta = env->bta_l1;
         env->pc = CPU_ILINK1(env);

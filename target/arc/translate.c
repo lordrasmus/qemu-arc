@@ -1229,7 +1229,12 @@ arc_gen_RTIE(DisasCtxt *ctx)
 
     tcg_gen_movi_tl(cpu_pc, ctx->cpc);
     gen_helper_rtie(cpu_env);
-    tcg_gen_mov_tl(cpu_pc, cpu_pcl);
+    /*
+     * helper_rtie() has already put the return address in PC.  Do not copy
+     * PCL over it: PCL is the PC rounded down to four bytes, so a return to a
+     * 16-bit aligned instruction -- the common case on ARCompact -- resumed
+     * two bytes early, in the middle of the preceding instruction.
+     */
     exit_tb(ctx); /* no chaining */
     return DISAS_NORETURN;
 }
