@@ -363,12 +363,15 @@ static enum arc_opcode_map arc_map_opcode(const struct arc_opcode *opcode)
 #undef CONSTANT
 #undef SEMANTIC_FUNCTION
     default:
-        /* TODO: This should be later taken out since default behaviour should
-           be an invalid instruction exception. */
+        /*
+         * No semantic function for this encoding: let the caller raise an
+         * invalid-instruction exception (that is what arc_decode() does for
+         * MAP_NONE), instead of killing the emulator.
+         */
         qemu_log_mask(LOG_UNIMP,
                       "Instruction %s is not mapped to semantic function.\n",
                       opcode->name);
-        assert("This should not happen" == 0);
+        return MAP_NONE;
     }
 
     return MAP_NONE;
