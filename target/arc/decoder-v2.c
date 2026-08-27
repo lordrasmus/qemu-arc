@@ -19,6 +19,7 @@
  */
 
 #include "qemu/osdep.h"
+#include "qemu/log.h"
 #include "target/arc/decoder.h"
 #include "qemu/osdep.h"
 #include "qemu/bswap.h"
@@ -262,8 +263,20 @@ const struct arc_opcode *arc_find_format_v2(insn_t *insnd,
     const struct arc_opcode *ret = NULL;
 
     unsigned char mcount = find_insn_for_opcode(insn, isa_mask, insn_len, multi_match);
-    /* TODO: This should eventually trigger invalid instruction exception */
-    assert(mcount != 0);
+
+    if (mcount == 0) {
+        /*
+         * No encoding in the decode tree matches.  Report it and let the
+         * caller raise an invalid instruction exception, as the TODO here
+         * asked for -- aborting the emulator loses the guest state that
+         * would tell us whether this is a hole in the tree or a guest that
+         * jumped into data.
+         */
+        qemu_log_mask(LOG_UNIMP, "[DECODE] no encoding for 0x%016llx "
+                      "(length %d, isa_mask 0x%x)\n",
+                      (unsigned long long) insn, insn_len, isa_mask);
+        return NULL;
+    }
 
     for(unsigned char i = 0; i < mcount; i++) {
         bool invalid = FALSE;
