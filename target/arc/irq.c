@@ -510,6 +510,7 @@ bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
     CPUARCState *env = &cpu->env;
     uint32_t vectno;
     bool level2;
+    struct lpa_lf_entry *entry;
 
     if (getenv("ARC_NO_IRQ")) {
         return false;   /* TEMP: Diagnose */
@@ -558,12 +559,43 @@ bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
             env->ac_irq_lv12 |= 1;
         }
 
+        /*
+         * Taking an interrupt breaks an outstanding LLOCK reservation, just
+         * like an exception does (see arc_cpu_do_interrupt()).  Without this
+         * a SCOND issued after the handler returns still succeeds, so an
+         * atomic read-modify-write silently loses a concurrent update.
+         */
+        entry = env->arconnect.lpa_lf;
+        if (entry != NULL) {
+            qemu_mutex_unlock(&(entry->mutex));
+            entry->lpa_lf = 0;
+        }
+
+        /*
+         * Entering the handler: kernel mode, no pending delayed jump, and
+         * loops inhibited -- otherwise the handler would run with the
+         * interrupted context's LP_START/LP_END still armed and could take a
+         * loop-back into a stale address, or complete a delayed jump to a
+         * stale BTA.  ARCompact does not mirror the old U bit into Z the way
+         * ARCv2 does; the handler reads STATUS32_L1 for that.
+         */
+        SET_STATUS_BIT(env->stat, Uf, 0);
+        SET_STATUS_BIT(env->stat, Lf, 1);
+        SET_STATUS_BIT(env->stat, DEf, 0);
+        SET_STATUS_BIT(env->stat, ESf, 0);
+        SET_STATUS_BIT(env->stat, DZf, 0);
+
         env->stat.pstate &= ~BRANCH_DELAY;
         env->pc = env->intvec + (vectno << 3);
         CPU_PCL(env) = env->pc & (~((target_ulong) 3));
 
         qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact level %d irq=%d isr=0x"
-                      TARGET_FMT_lx "\n", level2 ? 2 : 1, vectno, env->pc);
+                      TARGET_FMT_lx " ret=0x" TARGET_FMT_lx
+                      " bta=0x" TARGET_FMT_lx " stat=0x%08x\n",
+                      level2 ? 2 : 1, vectno, env->pc,
+                      level2 ? CPU_ILINK2(env) : CPU_ILINK1(env),
+                      env->bta, pack_status32(level2 ? &env->stat_l2
+                                                     : &env->stat_l1));
         return true;
     }
 
@@ -580,6 +612,8 @@ bool arc_arcompact_rtie(CPUARCState *env)
         CPU_PCL(env) = env->pc & (~((target_ulong) 3));
         SET_STATUS_BIT(env->stat, A2f, 0);
         env->ac_irq_lv12 &= ~2;
+        qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact rtie2 -> 0x" TARGET_FMT_lx
+                      " stat=0x%08x\n", env->pc, pack_status32(&env->stat));
         return true;
     }
 
@@ -590,6 +624,8 @@ bool arc_arcompact_rtie(CPUARCState *env)
         CPU_PCL(env) = env->pc & (~((target_ulong) 3));
         SET_STATUS_BIT(env->stat, A1f, 0);
         env->ac_irq_lv12 &= ~1;
+        qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact rtie1 -> 0x" TARGET_FMT_lx
+                      " stat=0x%08x\n", env->pc, pack_status32(&env->stat));
         return true;
     }
 
