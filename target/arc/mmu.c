@@ -335,7 +335,19 @@ arc_mmu_aux_set_tlbcmd(const struct arc_aux_reg_detail *aux_reg_detail,
         mmu->tlbindex &= ~(TLBINDEX_E | TLBINDEX_RC);
     }
     if (val == TLB_CMD_DELETE || val == TLB_CMD_INSERT) {
-        tlb_flush_page_by_mmuidx_all_cpus_synced(cs, VPN(pd0), 3);
+        /*
+         * A guest page is 1 << MMU_V3_PAGE_BITS wide -- 8 KiB, which is the
+         * only size this model allows -- while qemu's softmmu TLB works in
+         * TARGET_PAGE_SIZE units and TARGET_PAGE_BITS is 12 for ARC.  Flushing
+         * VPN(pd0) alone therefore leaves the upper 4 KiB half of the guest
+         * page in the TLB with its old translation and its old permissions.
+         */
+        target_ulong flush_addr;
+        for (flush_addr = VPN(pd0);
+             flush_addr < VPN(pd0) + ((target_ulong) 1 << MMU_V3_PAGE_BITS);
+             flush_addr += TARGET_PAGE_SIZE) {
+            tlb_flush_page_by_mmuidx_all_cpus_synced(cs, flush_addr, 3);
+        }
 
         if ((pd0 & PD0_G) != 0) {
             /*
