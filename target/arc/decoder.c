@@ -1293,6 +1293,9 @@ find_insn_for_opcode(uint64_t insn, uint16_t cpu_type, unsigned int len, enum op
 
   switch(cpu_type) {
 #if defined TARGET_ARC32
+    case ARC_OPCODE_ARC700:
+      #include "v1_arc700_dtree.def"
+      break;
     case ARC_OPCODE_ARCv2HS:
       #include "v2_hs_dtree.def"
       break;
