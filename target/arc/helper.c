@@ -250,7 +250,18 @@ void arc_cpu_do_interrupt(CPUState *cs)
 
     /* 10-14. Other flags sets. */
     env->stat.Zf  = GET_STATUS_BIT(env->stat_er, Uf);
-    SET_STATUS_BIT(env->stat, Lf, 1);
+    /*
+     * Only ARCompact disables the loop mechanism on entry.  The ARCompact ISA
+     * reference says so under STATUS32 ("L is set to 1, indicating loop is
+     * disabled on an interrupt or exception"), and its Linux port relies on
+     * it.  ARCv2 solves the same problem the other way round: the hardware
+     * saves LP_COUNT, LP_START and LP_END on entry when AUX_IRQ_CTRL asks for
+     * it, which Linux does (ictrl.save_lp_regs in the kernel's
+     * arch/arc/kernel/intc-arcv2.c), so its handlers expect loops to work.
+     */
+    if (cpu->family & ARC_OPCODE_ARCV1) {
+        SET_STATUS_BIT(env->stat, Lf, 1);
+    }
     SET_STATUS_BIT(env->stat, DEf, 0);
     SET_STATUS_BIT(env->stat, ESf, 0);
     SET_STATUS_BIT(env->stat, DZf, 0);
