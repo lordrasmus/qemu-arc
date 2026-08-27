@@ -1519,8 +1519,20 @@ void decode_opc(CPUARCState *env, DisasContext *ctx)
         gen_delayed_jump(ctx);
     }
 
+    /*
+     * STATUS32.L inhibits the loop-back -- but only honour it on ARCompact.
+     * There the kernel relies on it: the CPU sets L when taking an
+     * interrupt, exception or trap, which "clears the ZOL context", and
+     * Linux even sets it by hand where it fakes an rtie (see the comment in
+     * the kernel's arch/arc/include/asm/entry-compact.h).  On ARCv2 this
+     * model also sets L on every entry, while Linux clears it only in the
+     * delay-slot trampoline -- honouring it there disables the loops inside
+     * every handler and kills the guest, so keep the previous behaviour
+     * until the entry side is sorted out per family.
+     */
     if (ctx->base.tb->cs_base == ctx->npc
-        && !(ctx->base.tb->flags & TB_FLAG_LOOP_INHIBIT)) {
+        && !((ctx->base.tb->flags & TB_FLAG_LOOP_INHIBIT)
+             && (env_archcpu(ctx->env)->family & ARC_OPCODE_ARCV1))) {
         TCGLabel *zol_end = gen_new_label();
         TCGLabel *zol_else = gen_new_label();
         TCGv lps = tcg_temp_local_new();
