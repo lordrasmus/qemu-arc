@@ -20,6 +20,7 @@
  */
 
 #include "qemu/osdep.h"
+#include "qemu/log.h"
 #include "translate.h"
 #include "qemu/bitops.h"
 #include "tcg/tcg.h"
@@ -115,7 +116,15 @@ void arc_gen_verifyCCFlag(const DisasCtxt *ctx, TCGv ret)
         break;
 
     default:
-        g_assert_not_reached();
+        /*
+         * ARCompact has extension condition codes (0x10 and up) that this
+         * port does not model.  Report which one turned up and treat it as
+         * never taken, instead of aborting the emulator during bring-up.
+         */
+        qemu_log_mask(LOG_UNIMP, "[CC] unhandled condition code 0x%x at 0x"
+                      TARGET_FMT_lx "\n", ctx->insn.cc, ctx->cpc);
+        tcg_gen_movi_tl(ret, 0);
+        break;
     }
 
     tcg_temp_free(c1);
