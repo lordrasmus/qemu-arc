@@ -511,6 +511,10 @@ bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
     uint32_t vectno;
     bool level2;
 
+    if (getenv("ARC_NO_IRQ")) {
+        return false;   /* TEMP: Diagnose */
+    }
+
     if (GET_STATUS_BIT(env->stat, Hf)
         || GET_STATUS_BIT(env->stat, AEf)
         || GET_STATUS_BIT(env->stat, DEf)
