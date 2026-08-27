@@ -42,8 +42,16 @@ static void arc_pic_cpu_handler(void *opaque, int irq, int level)
     /* Assert if this handler is called in a system without interrupts. */
     assert(cpu->cfg.has_interrupts);
 
-    /* Assert if the IRQ is not within the cpu configuration bounds. */
-    assert(irq >= NR_OF_EXCEPTIONS && irq < (cpu->cfg.number_of_interrupts + NR_OF_EXCEPTIONS - 1));
+    /*
+     * Assert if the IRQ is not within the cpu configuration bounds.  On
+     * ARCompact the interrupt lines start at 3 -- only vectors 0..2 are
+     * exceptions there, not 0..15 as on ARCv2.
+     */
+    if (cpu->family & ARC_OPCODE_ARCV1) {
+        assert(irq >= 3 && irq < 32);
+    } else {
+        assert(irq >= NR_OF_EXCEPTIONS && irq < (cpu->cfg.number_of_interrupts + NR_OF_EXCEPTIONS - 1));
+    }
 
     irq_bit = 1 << env->irq_bank[irq].priority;
     if (level) {
@@ -104,8 +112,15 @@ void cpu_arc_pic_init(ARCCPU *cpu)
     qi = qemu_allocate_irqs(arc_pic_cpu_handler, cpu,
                             NR_OF_EXCEPTIONS + cpu->cfg.number_of_interrupts);
 
-    for (i = 0; i < cpu->cfg.number_of_interrupts; i++) {
-        env->irq[NR_OF_EXCEPTIONS + i] = qi[NR_OF_EXCEPTIONS + i];
+    if (cpu->family & ARC_OPCODE_ARCV1) {
+        /* ARCompact: interrupt lines 3..31 are all usable. */
+        for (i = 3; i < NR_OF_EXCEPTIONS + cpu->cfg.number_of_interrupts; i++) {
+            env->irq[i] = qi[i];
+        }
+    } else {
+        for (i = 0; i < cpu->cfg.number_of_interrupts; i++) {
+            env->irq[NR_OF_EXCEPTIONS + i] = qi[NR_OF_EXCEPTIONS + i];
+        }
     }
 }
 

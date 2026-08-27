@@ -37,6 +37,18 @@
 #define CYCLES_TO_NS(VAL) (muldiv64(VAL, NANOSECONDS_PER_SECOND, FREQ_HZ))
 #define NS_TO_CYCLE(VAL)  (muldiv64(VAL, FREQ_HZ, NANOSECONDS_PER_SECOND))
 
+
+/*
+ * ARCompact fixes Timer0 to interrupt 3 and Timer1 to 4 in the ISA, while
+ * ARCv2 puts them at 16/17 (see TIMER0_IRQ in the kernel's intc-compact.c
+ * versus intc-arcv2.c).
+ */
+static inline uint32_t arc_timer_irq_line(CPUARCState *env, int timer)
+{
+    return ((env_archcpu(env)->family & ARC_OPCODE_ARCV1) ? 3 : TIMER0_IRQ)
+           + timer;
+}
+
 static uint64_t get_ns(CPUARCState *env)
 {
 #ifndef CONFIG_USER_ONLY
@@ -103,7 +115,7 @@ static void cpu_arc_timer_expire(CPUARCState *env, uint32_t timer)
     /* Raise an interrupt if enabled. */
     if ((env->timer[timer].T_Cntrl & TMR_IE) && !overflow) {
         qemu_log_mask(CPU_LOG_INT, "[TMR%d] Rising IRQ\n", timer);
-        qemu_irq_raise(env->irq[TIMER0_IRQ + (timer & 0x01)]);
+        qemu_irq_raise(env->irq[arc_timer_irq_line(env, timer & 0x01)]);
     }
 }
 #endif
@@ -276,7 +288,7 @@ static void cpu_arc_control_set(CPUARCState *env,
         qemu_mutex_lock_iothread();
     }
     if ((env->timer[timer].T_Cntrl & TMR_IP) && !(value & TMR_IP)) {
-        qemu_irq_lower(env->irq[TIMER0_IRQ + (timer)]);
+        qemu_irq_lower(env->irq[arc_timer_irq_line(env, timer)]);
     }
     env->timer[timer].T_Cntrl = value & 0x1f;
     if (unlocked) {

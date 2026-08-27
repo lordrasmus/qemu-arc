@@ -28,6 +28,8 @@ bool arc_cpu_exec_interrupt(CPUState *, int);
 bool arc_rtie_interrupts(CPUARCState *);
 void switchSP(CPUARCState *);
 void arc_initializeIRQ(ARCCPU *);
+bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request);
+bool arc_arcompact_rtie(CPUARCState *env);
 void arc_resetIRQ(ARCCPU *);
 
 /* Interrupt vectors start after exception vectors */

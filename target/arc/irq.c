@@ -494,10 +494,112 @@ void aux_irq_set(const struct arc_aux_reg_detail *aux_reg_detail,
 
 /* Check if we can interrupt the cpu. */
 
+
+/*
+ * ARCompact (ARC600/ARC700) interrupt delivery.
+ *
+ * ARCompact knows two interrupt levels instead of ARCv2's priorities.  On
+ * entry the return address goes to ILINK1/ILINK2 (core registers r29/r30) and
+ * STATUS32 is saved to STATUS32_L1/L2; the level is then disabled (E1/E2
+ * cleared) and marked active (A1/A2 set).  The vector table holds code, so the
+ * PC becomes intvec + vector * 8.  AUX_IRQ_LEV selects which lines are level 2.
+ */
+bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
+{
+    ARCCPU *cpu = ARC_CPU(cs);
+    CPUARCState *env = &cpu->env;
+    uint32_t vectno;
+    bool level2;
+
+    if (GET_STATUS_BIT(env->stat, Hf)
+        || GET_STATUS_BIT(env->stat, AEf)
+        || GET_STATUS_BIT(env->stat, DEf)
+        || !(interrupt_request & CPU_INTERRUPT_HARD)) {
+        return false;
+    }
+
+    /* Interrupt lines 3..31; 0..2 are exception vectors on ARCompact. */
+    for (vectno = 3; vectno < 32; vectno++) {
+        if (!env->irq_bank[vectno].enable || !env->irq_bank[vectno].pending) {
+            continue;
+        }
+
+        level2 = (env->ac_irq_lev >> vectno) & 1;
+
+        if (level2) {
+            if (!GET_STATUS_BIT(env->stat, E2f)
+                || GET_STATUS_BIT(env->stat, A2f)) {
+                continue;
+            }
+            CPU_ILINK2(env) = env->pc;
+            env->stat_l2 = env->stat;
+            env->bta_l2 = env->bta;
+            env->icause[1] = vectno;
+            SET_STATUS_BIT(env->stat, E2f, 0);
+            SET_STATUS_BIT(env->stat, A2f, 1);
+            env->ac_irq_lv12 |= 2;
+        } else {
+            if (!GET_STATUS_BIT(env->stat, E1f)
+                || GET_STATUS_BIT(env->stat, A1f)
+                /* A level 2 handler must not be interrupted by level 1. */
+                || GET_STATUS_BIT(env->stat, A2f)) {
+                continue;
+            }
+            CPU_ILINK1(env) = env->pc;
+            env->stat_l1 = env->stat;
+            env->bta_l1 = env->bta;
+            env->icause[0] = vectno;
+            SET_STATUS_BIT(env->stat, E1f, 0);
+            SET_STATUS_BIT(env->stat, A1f, 1);
+            env->ac_irq_lv12 |= 1;
+        }
+
+        env->stat.pstate &= ~BRANCH_DELAY;
+        env->pc = env->intvec + (vectno << 3);
+        CPU_PCL(env) = env->pc & (~((target_ulong) 3));
+
+        qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact level %d irq=%d isr=0x"
+                      TARGET_FMT_lx "\n", level2 ? 2 : 1, vectno, env->pc);
+        return true;
+    }
+
+    return false;
+}
+
+/* Counterpart of the above, called from the RTIE helper. */
+bool arc_arcompact_rtie(CPUARCState *env)
+{
+    if (GET_STATUS_BIT(env->stat, A2f)) {
+        env->stat = env->stat_l2;
+        env->bta = env->bta_l2;
+        env->pc = CPU_ILINK2(env);
+        CPU_PCL(env) = env->pc & (~((target_ulong) 3));
+        SET_STATUS_BIT(env->stat, A2f, 0);
+        env->ac_irq_lv12 &= ~2;
+        return true;
+    }
+
+    if (GET_STATUS_BIT(env->stat, A1f)) {
+        env->stat = env->stat_l1;
+        env->bta = env->bta_l1;
+        env->pc = CPU_ILINK1(env);
+        CPU_PCL(env) = env->pc & (~((target_ulong) 3));
+        SET_STATUS_BIT(env->stat, A1f, 0);
+        env->ac_irq_lv12 &= ~1;
+        return true;
+    }
+
+    return false;
+}
+
 bool arc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 {
     ARCCPU *cpu = ARC_CPU(cs);
     CPUARCState *env = &cpu->env;
+
+    if (cpu->family & ARC_OPCODE_ARCV1) {
+        return arc_arcompact_exec_interrupt(cs, interrupt_request);
+    }
     bool found = false;
     uint32_t vectno = 0;
     uint32_t offset, priority;
@@ -640,6 +742,93 @@ void arc_resetIRQ(ARCCPU *cpu)
 }
 
 /* Initializing the IRQ subsystem. */
+
+/*
+ * ARCompact (ARC600/ARC700) interrupt controller registers.
+ *
+ * Unlike ARCv2, which banks its per-interrupt registers behind IRQ_SELECT,
+ * ARCompact addresses all 32 interrupt lines through single bitmask
+ * registers.  AUX_IENABLE is kept in the per-interrupt bank so that the
+ * existing delivery path keeps working.
+ */
+target_ulong aux_irq_arcompact_get(const struct arc_aux_reg_detail *aux_reg_detail,
+                                   void *data)
+{
+    CPUARCState *env = (CPUARCState *) data;
+    target_ulong val = 0;
+    unsigned int i;
+
+    switch (aux_reg_detail->id) {
+    case AUX_ID_aux_ienable:
+        for (i = 0; i < 32; i++) {
+            if (env->irq_bank[i].enable) {
+                val |= 1u << i;
+            }
+        }
+        break;
+    case AUX_ID_aux_irq_lev:
+        val = env->ac_irq_lev;
+        break;
+    case AUX_ID_aux_itrigger:
+        val = env->ac_itrigger;
+        break;
+    case AUX_ID_aux_irq_lv12:
+        val = env->ac_irq_lv12;
+        break;
+    case AUX_ID_aux_ipulse:
+        val = 0;
+        break;
+    /* ARCompact reports the interrupt being served per level. */
+    case AUX_ID_aux_icause1:
+        val = env->icause[0];
+        break;
+    case AUX_ID_aux_icause2:
+        val = env->icause[1];
+        break;
+    default:
+        break;
+    }
+
+    return val;
+}
+
+void aux_irq_arcompact_set(const struct arc_aux_reg_detail *aux_reg_detail,
+                            target_ulong val, void *data)
+{
+    CPUARCState *env = (CPUARCState *) data;
+    unsigned int i;
+
+    qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact set %s = 0x" TARGET_FMT_lx "\n",
+                  arc_aux_reg_name[aux_reg_detail->id], val);
+
+    switch (aux_reg_detail->id) {
+    case AUX_ID_aux_ienable:
+        for (i = 0; i < 32; i++) {
+            env->irq_bank[i].enable = (val >> i) & 1;
+        }
+        break;
+    case AUX_ID_aux_irq_lev:
+        env->ac_irq_lev = val;
+        break;
+    case AUX_ID_aux_itrigger:
+        env->ac_itrigger = val;
+        break;
+    case AUX_ID_aux_irq_lv12:
+        /* Writing a 1 clears the corresponding "level active" bit. */
+        env->ac_irq_lv12 &= ~val;
+        break;
+    case AUX_ID_aux_ipulse:
+        for (i = 0; i < 32; i++) {
+            if ((val >> i) & 1) {
+                env->irq_bank[i].pending = 0;
+            }
+        }
+        break;
+    default:
+        break;
+    }
+}
+
 void arc_initializeIRQ(ARCCPU *cpu)
 {
     CPUARCState *env = &cpu->env;

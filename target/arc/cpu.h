@@ -126,6 +126,14 @@ enum exception_code_list {
 
 FIELD(STATUS32, Hf,  0, 1)
 FIELD(STATUS32, Ef,  1, 4)
+/*
+ * On ARCompact bits 1..4 are not a priority mask but four single bits:
+ * E1/E2 enable level 1/2 interrupts, A1/A2 mark them active.
+ */
+FIELD(STATUS32, E1f, 1, 1)
+FIELD(STATUS32, E2f, 2, 1)
+FIELD(STATUS32, A1f, 3, 1)
+FIELD(STATUS32, A2f, 4, 1)
 FIELD(STATUS32, AEf, 5, 1)
 FIELD(STATUS32, DEf, 6, 1)
 FIELD(STATUS32, Uf,  7, 1)
@@ -236,6 +244,11 @@ struct CPUArchState {
     } macmod;
 
     target_ulong intvec;
+
+    /* ARCompact (ARC600/ARC700) interrupt controller registers. */
+    uint32_t ac_irq_lev;        /* AUX_IRQ_LEV   (0x200) */
+    uint32_t ac_itrigger;       /* AUX_ITRIGGER  (0x40d) */
+    uint32_t ac_irq_lv12;       /* AUX_IRQ_LV12  (0x43)  */
 
     target_ulong eret;
     target_ulong erbta;

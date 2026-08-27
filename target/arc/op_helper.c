@@ -315,6 +315,17 @@ void helper_rtie(CPUARCState *env)
         return;
     }
 
+    if ((env_archcpu(env)->family & ARC_OPCODE_ARCV1)
+        && !GET_STATUS_BIT(env->stat, AEf)
+        && arc_arcompact_rtie(env)) {
+        qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact RTIE @0x" TARGET_FMT_lx
+                      "\n", env->pc);
+#ifdef TARGET_ARC32
+        helper_zol_verify(env, env->pc);
+#endif
+        return;
+    }
+
     if (GET_STATUS_BIT(env->stat, AEf) || (env->aux_irq_act & 0xFFFF) == 0) {
         assert(GET_STATUS_BIT(env->stat, Uf) == 0);
 
