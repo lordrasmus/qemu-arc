@@ -34,6 +34,30 @@
 #include "qemu/log.h"
 
 #ifndef CONFIG_USER_ONLY
+/*
+ * ARCompact (ARC600/ARC700) numbers its exception vectors differently from
+ * ARCv2 and puts the "extended" exceptions at 0x20 and above; see the vector
+ * table in the kernel's arch/arc/kernel/entry-compact.S.  Vectors that do not
+ * exist on ARCompact keep their ARCv2 number -- they cannot be raised there.
+ */
+static uint32_t arc_arcompact_vector(int excp)
+{
+    switch (excp) {
+    case EXCP_RESET:            return 0x00;
+    case EXCP_MEMORY_ERROR:     return 0x01;
+    case EXCP_INST_ERROR:       return 0x02;
+    case EXCP_MACHINE_CHECK:    return 0x20;
+    case EXCP_TLB_MISS_I:       return 0x21;
+    case EXCP_TLB_MISS_D:       return 0x22;
+    case EXCP_PROTV:            return 0x23;
+    case EXCP_PRIVILEGEV:       return 0x24;
+    case EXCP_SWI:              /* trap0/swi both enter through Trap. */
+    case EXCP_TRAP:             return 0x25;
+    case EXCP_EXTENSION:        return 0x26;
+    default:                    return excp & 0x0F;
+    }
+}
+
 void arc_cpu_do_interrupt(CPUState *cs)
 {
     ARCCPU      *cpu    = ARC_CPU(cs);
@@ -83,8 +107,14 @@ void arc_cpu_do_interrupt(CPUState *cs)
         arc_mmu_disable(env);
         env->mpu.enabled = false;     /* no more MPU */
     }
-    vectno = cs->exception_index & 0x0F;
-    offset = OFFSET_FOR_VECTOR(vectno);
+    if (cpu->family & ARC_OPCODE_ARCV1) {
+        /* Each ARCompact vector table entry is a jump of two words. */
+        vectno = arc_arcompact_vector(cs->exception_index);
+        offset = vectno << 3;
+    } else {
+        vectno = cs->exception_index & 0x0F;
+        offset = OFFSET_FOR_VECTOR(vectno);
+    }
 
     /* Generic computation for exceptions. */
     switch (cs->exception_index) {
@@ -222,6 +252,20 @@ void arc_cpu_do_interrupt(CPUState *cs)
     env->stat.pstate &= ~BRANCH_DELAY;
 
     /* 15. The PC is set with the appropriate exception vector. */
+    if (cpu->family & ARC_OPCODE_ARCV1) {
+        /*
+         * ARCompact jumps *into* the vector table: the slot holds a
+         * "j handler" instruction, not the handler's address.
+         */
+        env->pc = env->intvec + offset;
+        CPU_PCL(env) = env->pc & (~((target_ulong) 3));
+        qemu_log_mask(CPU_LOG_INT, "[EXCP] isr=0x" TARGET_FMT_lx
+                      " vec=0x%x ecr=0x" TARGET_FMT_lx "\n",
+                      env->pc, offset, env->ecr);
+        cs->exception_index = -1;
+        return;
+    }
+
     switch(get_mmu_version(env)) {
 #if defined(TARGET_ARC32)
       case MMU_VERSION_6:
