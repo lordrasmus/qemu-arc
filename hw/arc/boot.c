@@ -20,6 +20,7 @@
 
 #include "qemu/osdep.h"
 #include "boot.h"
+#include "target/arc/arc-common.h"
 #include "elf.h"
 #include "hw/loader.h"
 #include "qemu/error-report.h"
@@ -75,7 +76,12 @@ void arc_load_kernel(ARCCPU *cpu, struct arc_boot_info *info)
         exit(EXIT_FAILURE);
     }
 
-    elf_machine = cpu->family > 2 ? EM_ARC_COMPACT2 : EM_ARC_COMPACT;
+    /*
+     * cpu->family is a bitmask, not an ordinal: ARC700 is 1 << 2, so the
+     * original "> 2" test asked for an ARCv2 ELF on ARC700 kernels.
+     */
+    elf_machine = (cpu->family & ARC_OPCODE_ARCV1) != 0 ?
+                  EM_ARC_COMPACT : EM_ARC_COMPACT2;
     elf_machine = (cpu->family & ARC_OPCODE_V3_ALL) != 0 ? EM_ARC_COMPACT3_64 : elf_machine;
     kernel_size = load_elf(info->kernel_filename, NULL, NULL, NULL,
                            &entry, NULL, NULL, NULL,
