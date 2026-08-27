@@ -397,6 +397,44 @@ arc_mmu_aux_set_tlbcmd(const struct arc_aux_reg_detail *aux_reg_detail,
         }
     }
 
+    /*
+     * TLBProbe reports in TLBINDEX where an entry lives, or that it does not
+     * exist.  The ARCompact kernel needs it for every page it removes:
+     * tlb_entry_lkup() probes, and tlb_entry_erase() then writes a zeroed
+     * entry at the reported index (arch/arc/mm/tlb.c, MMU version < 4).
+     * Without it TLBINDEX kept a stale value, the kernel took that for a hit
+     * and cleared an unrelated entry while the one it wanted to remove
+     * stayed valid -- a freed page kept its translation.
+     */
+    if (val == TLB_CMD_PROBE) {
+        int found = 0;
+        uint32_t idx = 0;
+
+        arc_mmu_lookup_tlb(pd0, matching_mask | PD0_V, mmu, &found, &idx);
+
+        if (found == 0) {
+            mmu->tlbindex = TLB_LKUP_ERR;
+        } else if (found == 1) {
+            mmu->tlbindex = idx;
+        } else {
+            mmu->tlbindex = TLB_DUP_ERR;
+        }
+
+        qemu_log_mask(CPU_LOG_MMU,
+                      "[MMU] Probe at 0x" TARGET_FMT_lx ", pd0 = 0x%08x"
+                      " -> index 0x%08x\n",
+                      env->pc, pd0, mmu->tlbindex);
+        return;
+    }
+
+    /* TLBGetIndex reports the index of the set the VPN selects. */
+    if (val == TLB_CMD_GETINDEX) {
+        uint32_t set = (VPN(pd0) >> MMU_V3_PAGE_BITS) & (N_SETS - 1);
+
+        mmu->tlbindex = set * N_WAYS;
+        return;
+    }
+
     /* NOTE: We do not implement IVUTLB as we do not model uTLBs. */
     assert(val == TLB_CMD_INSERT
            || val == TLB_CMD_DELETE
@@ -404,6 +442,8 @@ arc_mmu_aux_set_tlbcmd(const struct arc_aux_reg_detail *aux_reg_detail,
            || val == TLB_CMD_READ
            || val == TLB_CMD_WRITENI
            || val == TLB_CMD_IVUTLB
+           || val == TLB_CMD_PROBE
+           || val == TLB_CMD_GETINDEX
            );
 }
 

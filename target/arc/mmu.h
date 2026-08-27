@@ -62,6 +62,12 @@ extern unsigned char mmu_v3_page_size;
 #define TLB_CMD_INSERT  0x7
 #define TLB_CMD_DELETE  0x8
 #define TLB_CMD_IVUTLB  0x6
+#define TLB_CMD_GETINDEX 0x3
+#define TLB_CMD_PROBE   0x4
+
+/* Values TLBINDEX reports for a failed or ambiguous probe (MMU v1..v3). */
+#define TLB_LKUP_ERR    0x80000000
+#define TLB_DUP_ERR     (TLB_LKUP_ERR | 0x00000001)
 
 #define N_SETS          256
 #define N_WAYS          4
