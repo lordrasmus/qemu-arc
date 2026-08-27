@@ -320,9 +320,12 @@ void helper_rtie(CPUARCState *env)
         && arc_arcompact_rtie(env)) {
         qemu_log_mask(CPU_LOG_INT, "[IRQ] ARCompact RTIE @0x" TARGET_FMT_lx
                       "\n", env->pc);
-#ifdef TARGET_ARC32
-        helper_zol_verify(env, env->pc);
-#endif
+        /*
+         * No zol_verify() here: the loop-back is part of the instruction that
+         * ends at LP_END, so it has either already happened before the
+         * interrupt was taken or is still ahead of us.  Running the check on
+         * the resume address would take the branch a second time.
+         */
         return;
     }
 
