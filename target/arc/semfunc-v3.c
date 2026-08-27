@@ -7613,6 +7613,8 @@ arc_gen_LP (DisasCtxt *ctx, TCGv rd)
   tcg_gen_mov_tl(temp_9, temp_10);
   tcg_gen_add_tl(temp_8, temp_9, rd);
   writeAuxReg(lp_end_index, temp_8);
+  /* LPcc clears STATUS32.L, see the note in semfunc-v2.c. */
+  TCG_CLR_STATUS_FIELD_BIT(cpu_pstate, Lf);
   tcg_gen_br(done_1);
   gen_set_label(else_1);
   getPCL(temp_13);

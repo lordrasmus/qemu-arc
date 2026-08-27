@@ -231,7 +231,7 @@ static void arc_enter_firq(ARCCPU *cpu, uint32_t vector)
     env->stat_l1 = env->stat;
 
     /* Set stat {Z = U; U = 0; L = 1; ES = 0; DZ = 0; DE = 0;} */
-    /* No L here: ARCv2 saves the loop registers instead, see helper.c. */
+    SET_STATUS_BIT(env->stat, Lf, 1);
     env->stat.Zf = GET_STATUS_BIT(env->stat, Uf); /* Old User/Kernel bit. */
     SET_STATUS_BIT(env->stat, Uf, 0);
     SET_STATUS_BIT(env->stat, ESf, 0);
@@ -336,7 +336,7 @@ static void arc_enter_irq(ARCCPU *cpu, uint32_t vector)
 
     /* Set STATUS bits */
     env->stat.Zf = GET_STATUS_BIT(env->stat, Uf); /* Old User/Kernel mode. */
-    /* No L here: ARCv2 saves the loop registers instead, see helper.c. */
+    SET_STATUS_BIT(env->stat, Lf, 1);
     SET_STATUS_BIT(env->stat, ESf, 0);
     SET_STATUS_BIT(env->stat, DZf, 0);
     SET_STATUS_BIT(env->stat, DEf, 0);
