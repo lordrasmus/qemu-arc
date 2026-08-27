@@ -74,6 +74,11 @@ typedef struct CPUArchState CPUARCState;
 /* Indicate if a branching instruction with a delay slot is met. */
 #define BRANCH_DELAY     (1 << 21)
 
+/* tb->flags: bit 0 is the MMU index. */
+#define TB_FLAG_IN_DELAY_SLOT   (1 << 1)
+#define TB_FLAG_DELAY_PENDING   (1 << 2)
+#define TB_FLAG_LOOP_INHIBIT    (1 << 3)
+
 enum exception_code_list {
     EXCP_NO_EXCEPTION = -1,
     EXCP_RESET = 0,
@@ -424,12 +429,46 @@ static inline void cpu_get_tb_cpu_state(CPUARCState *env, target_ulong *pc,
                                         uint32_t *pflags)
 {
     *pc = env->pc;
-    *cs_base = 0;
+    /*
+     * Two pieces of CPU state change what gets generated for the same PC and
+     * therefore have to be part of the translation key:
+     *
+     *  - LP_END, because the instruction ending there gets the zero-overhead
+     *    loop branch appended,
+     *  - the delay slot flag, because the instruction in a delay slot gets
+     *    the delayed jump appended.
+     *
+     * Without them a translation block generated in one state was reused in
+     * another: loops jumped to a stale LP_START -- an arbitrary address, at
+     * times in the middle of an instruction -- and delayed jumps were either
+     * dropped or taken twice.
+     */
+    *cs_base = env->lpe;
     *pflags = 0;
 
 #ifndef CONFIG_USER_ONLY
     *pflags |= cpu_mmu_index(env, 0);
 #endif
+
+    if (env->stat.pstate & BRANCH_DELAY) {
+        *pflags |= TB_FLAG_IN_DELAY_SLOT;
+    }
+
+    /*
+     * STATUS32.DE decides at translation time whether an instruction that may
+     * not sit in a delay slot raises "illegal instruction sequence", so it
+     * belongs in the key as well.  Reused across a change of the flag, such a
+     * block either raised the exception for an innocent instruction or never
+     * raised it at all.
+     */
+    if (env->stat.pstate & STATUS32_DE) {
+        *pflags |= TB_FLAG_DELAY_PENDING;
+    }
+
+    /* STATUS32.L inhibits the loop-back, so it changes the code as well. */
+    if (GET_STATUS_BIT(env->stat, Lf)) {
+        *pflags |= TB_FLAG_LOOP_INHIBIT;
+    }
 }
 
 #define IS_ARCV3(CPU) \

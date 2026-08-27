@@ -194,11 +194,10 @@ static void arc_tr_init_disas_context(DisasContextBase *dcbase,
                                       CPUState *cs)
 {
     DisasContext *dc = container_of(dcbase, DisasContext, base);
-    const CPUARCState *env = cs->env_ptr;
 
     dc->base.is_jmp = DISAS_NEXT;
     dc->mem_idx = dc->base.tb->flags & 1;
-    dc->in_delay_slot = !!(env->stat.pstate & BRANCH_DELAY);
+    dc->in_delay_slot = !!(dc->base.tb->flags & TB_FLAG_IN_DELAY_SLOT);
 }
 
 static void arc_tr_tb_start(DisasContextBase *dcbase, CPUState *cpu)
@@ -542,7 +541,7 @@ static bool check_enter_leave_nr_regs(const DisasCtxt *ctx,
  */
 static bool check_delay_or_execution_slot(const DisasCtxt *ctx)
 {
-    if (ctx->env->stat.pstate & STATUS32_DE) {
+    if (ctx->base.tb->flags & TB_FLAG_DELAY_PENDING) {
         TCGv tcg_index = tcg_const_tl(EXCP_INST_ERROR);
         TCGv tcg_cause = tcg_const_tl(0x1);
         TCGv tcg_param = tcg_const_tl(0x0);
@@ -1515,7 +1514,8 @@ void decode_opc(CPUARCState *env, DisasContext *ctx)
         gen_delayed_jump(ctx);
     }
 
-    if (env->lpe == ctx->npc) {
+    if (ctx->base.tb->cs_base == ctx->npc
+        && !(ctx->base.tb->flags & TB_FLAG_LOOP_INHIBIT)) {
         TCGLabel *zol_end = gen_new_label();
         TCGLabel *zol_else = gen_new_label();
         TCGv lps = tcg_temp_local_new();
@@ -1525,7 +1525,9 @@ void decode_opc(CPUARCState *env, DisasContext *ctx)
           tcg_gen_br(zol_end);
         gen_set_label(zol_else);
           tcg_gen_subi_tl(cpu_lpc, cpu_lpc, 1);
-          tcg_gen_movi_tl(lps, env->lps);
+          /* Read LP_START at run time: only its use, not its value, is
+             part of the translation key. */
+          tcg_gen_ld_tl(lps, cpu_env, offsetof(CPUARCState, lps));
           /* Set PC */
           assert(!ctx->insn.d);
           gen_goto_tb(ctx, lps);
