@@ -236,6 +236,15 @@ arc_general_regs_set(const struct arc_aux_reg_detail *aux_reg_detail,
         env->ecr = val;
         break;
 
+    /* ARCompact: the interrupt handler restores these before rtie. */
+    case AUX_ID_bta_l1:
+        env->bta_l1 = val;
+        break;
+
+    case AUX_ID_bta_l2:
+        env->bta_l2 = val;
+        break;
+
     case AUX_ID_efa:
         env->efa = val;
         break;

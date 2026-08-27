@@ -156,6 +156,11 @@ static void arc_cpu_reset(DeviceState *dev)
          */
         cpu->mpy_build = 0x00000410;
         break;
+    case ARC_OPCODE_ARC600:
+    case ARC_OPCODE_ARC700:
+        /* ARCompact: MULTIPLY_BUILD not modelled -- report "absent". */
+        cpu->mpy_build = 0;
+        break;
     default:
         assert(!"MULTIPLY_BUILD register is not implemented for this CPU family.");
     }

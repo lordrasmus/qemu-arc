@@ -725,6 +725,8 @@ void arc_cpu_register_gdb_regs_for_features(ARCCPU *cpu)
                                  GDB_ARCV3_FPU_LAST,
                                  GDB_ARCV3_64_FPU_XML,
                                  0);
+    } else if (cpu->family & ARC_OPCODE_ARCV1) {
+        /* ARCompact (arc600/arc700): no aux-register XML in this port. */
     } else {
         g_assert_not_reached();
     }

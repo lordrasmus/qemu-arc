@@ -37,6 +37,20 @@ arc_mmu_aux_get(const struct arc_aux_reg_detail *aux_reg_detail, void *data)
 
     switch (aux_reg_detail->id) {
     case AUX_ID_mmu_build:
+        if (env_archcpu(env)->family & ARC_OPCODE_ARCV1) {
+            /*
+             * ARCompact reports an MMUv3 build register, whose fields sit at
+             * different offsets than MMUv4's (see struct bcr_mmu_3 in the
+             * kernel's arch/arc/mm/tlb.c): ver | ways | sets | sasid | pg_sz |
+             * u_itlb | u_dtlb.  The geometry must match the TLB modelled here,
+             * because the kernel walks every set and way when flushing.
+             */
+            reg = (3 << 24)                             /* MMU version */
+                | (ctz32(N_WAYS) << 20)                 /* log2(ways) */
+                | (ctz32(N_SETS) << 16)                 /* log2(sets) */
+                | ((mmu_v3_page_size - 9) << 8);        /* page size */
+            break;
+        }
         /*
          * For now hardcode the TLB geometry and canonical page sizes
          * MMUv4: 2M Super Page, 8k Page, 4 way set associative,

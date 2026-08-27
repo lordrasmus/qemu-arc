@@ -513,6 +513,15 @@ arc_status_regs_get(const struct arc_aux_reg_detail *aux_reg_detail,
         reg = pack_status32(&env->stat_er);
         break;
 
+    /* ARCompact saves STATUS32 here when taking a level 1/2 interrupt. */
+    case AUX_ID_status32_l1:
+        reg = pack_status32(&env->stat_l1);
+        break;
+
+    case AUX_ID_status32_l2:
+        reg = pack_status32(&env->stat_l2);
+        break;
+
     default:
         break;
     }
@@ -534,6 +543,14 @@ arc_status_regs_set(const struct arc_aux_reg_detail *aux_reg_detail,
 
     case AUX_ID_erstatus:
         unpack_status32(&env->stat_er, val);
+        break;
+
+    case AUX_ID_status32_l1:
+        unpack_status32(&env->stat_l1, val);
+        break;
+
+    case AUX_ID_status32_l2:
+        unpack_status32(&env->stat_l2, val);
         break;
 
     default:

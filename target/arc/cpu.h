@@ -227,7 +227,7 @@ struct CPUArchState {
     target_ulong        r[64];
     uint64_t            fpr[32];      /* assume both F and D extensions. */
 
-    ARCStatus stat, stat_l1, stat_er;
+    ARCStatus stat, stat_l1, stat_l2, stat_er;
 
     struct {
         target_ulong    S2;
