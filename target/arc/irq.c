@@ -538,6 +538,13 @@ bool arc_arcompact_exec_interrupt(CPUState *cs, int interrupt_request)
             }
             CPU_ILINK2(env) = env->pc;
             env->stat_l2 = env->stat;
+            /*
+             * "Only one bit, A1 or A2, is ever set at any one time in
+             * STATUS32" -- a level 2 interrupt taken during a level 1
+             * handler clears A1 in STATUS32 and leaves it set in the saved
+             * STATUS32_L2 (ARCompact ISA Programmer's Reference, STATUS32).
+             */
+            SET_STATUS_BIT(env->stat, A1f, 0);
             env->bta_l2 = env->bta;
             env->icause[1] = vectno;
             SET_STATUS_BIT(env->stat, E2f, 0);

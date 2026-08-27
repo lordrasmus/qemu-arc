@@ -7343,6 +7343,13 @@ arc_gen_LP(DisasCtxt *ctx, TCGv rd)
     tcg_gen_mov_tl(temp_9, temp_10);
     tcg_gen_add_tl(temp_8, temp_9, rd);
     writeAuxReg(lp_end_index, temp_8);
+    /*
+     * "L is also cleared when a loop instruction (LPcc) is executed"
+     * (ARCompact ISA Programmer's Reference, STATUS32).  Without this a
+     * handler that sets up its own loop would keep the loop mechanism
+     * disabled, since taking the interrupt or exception had set L.
+     */
+    TCG_CLR_STATUS_FIELD_BIT(cpu_pstate, Lf);
     tcg_gen_br(done_1);
     gen_set_label(else_1);
     getPCL(temp_13);
