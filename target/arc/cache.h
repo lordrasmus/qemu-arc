@@ -30,6 +30,7 @@ struct arc_cache {
     uint32_t ic_ptag;
     uint32_t ic_ptag_hi;
     uint32_t dc_endr;
+    uint32_t dc_ptag;
     uint32_t dc_ptag_hi;
 };
 

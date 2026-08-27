@@ -44,7 +44,9 @@ void arc_cache_aux_set(const struct arc_aux_reg_detail *aux_reg_detail,
 
     switch (aux_reg_detail->id) {
     case AUX_ID_ic_ivic:
+    case AUX_ID_ivic:          /* ARCompact name for IC_IVIC */
     case AUX_ID_ic_ivil:
+    case AUX_ID_unlockline:    /* ARCompact name for IC_IVIL */
     case AUX_ID_dc_ivdc:
     case AUX_ID_dc_ivdl:
     case AUX_ID_dc_flsh:
@@ -54,6 +56,7 @@ void arc_cache_aux_set(const struct arc_aux_reg_detail *aux_reg_detail,
 	break;
 
     case AUX_ID_ic_ctrl:
+    case AUX_ID_che_mode:  /* ARCompact name for IC_CTRL */
 	arc_invalidate_cache(env);
         cache->ic_disabled = val & 1;
         break;
@@ -88,6 +91,17 @@ void arc_cache_aux_set(const struct arc_aux_reg_detail *aux_reg_detail,
 
     case AUX_ID_dc_endr:
         cache->dc_endr = val & 0xffffff00;
+        break;
+
+    /*
+     * ARCompact's aliasing D-cache needs the physical tag next to the
+     * virtual address when invalidating a line: __sync_icache_dcache()
+     * writes DC_PTAG and then DC_IVDL.  Nothing here caches anything, so
+     * storing the value is enough -- but the register has to exist, or the
+     * flush loop dies on an illegal instruction.
+     */
+    case AUX_ID_dc_ptag:
+        cache->dc_ptag = val;
         break;
 
     case AUX_ID_dc_ptag_hi:
@@ -125,6 +139,21 @@ target_ulong arc_cache_aux_get(const struct arc_aux_reg_detail *aux_reg_detail,
  *   Version number: 4 - ARCv2
  */
     case AUX_ID_ic_build:
+        if (cpu->family & ARC_OPCODE_ARCV1) {
+            /*
+             * ARCompact reports version 3, and the kernel then insists on
+             * the fixed geometry that goes with it (see read_decode_cache_bcr
+             * in the kernel's arch/arc/mm/cache.c): config must be 3, which
+             * means 2-way, and the I-cache must not alias, i.e.
+             * size / ways / page size <= 1.  16K/2-way with 8K pages fits,
+             * and a 64 byte line matches the kernel's L1_CACHE_BYTES.
+             */
+            reg = (3 << 16)   /* line size: 8 << 3 = 64 bytes */
+                | (5 << 12)   /* capacity:  1 << (5 - 1) = 16 KB */
+                | (3 << 8)    /* config: fixed 2-way on version <= 3 */
+                | (3 << 0);   /* version: ARCompact */
+            break;
+        }
         reg = (0 << 22) | /* D */
               (2 << 20) | /* FL */
               (3 << 16) | /* BBSixe*/
@@ -134,6 +163,7 @@ target_ulong arc_cache_aux_get(const struct arc_aux_reg_detail *aux_reg_detail,
         break;
 
     case AUX_ID_ic_ctrl:
+    case AUX_ID_che_mode:  /* ARCompact name for IC_CTRL */
         reg = cache->ic_disabled & 1;
         break;
 
@@ -143,6 +173,10 @@ target_ulong arc_cache_aux_get(const struct arc_aux_reg_detail *aux_reg_detail,
 
     case AUX_ID_ic_endr:
         reg = cache->ic_endr;
+        break;
+
+    case AUX_ID_dc_ptag:
+        reg = cache->dc_ptag;
         break;
 
     case AUX_ID_ic_ptag:
@@ -162,6 +196,14 @@ target_ulong arc_cache_aux_get(const struct arc_aux_reg_detail *aux_reg_detail,
  *   Version number: 4 - ARCv2 with fixed number of cycles
  */
     case AUX_ID_dc_build:
+        if (cpu->family & ARC_OPCODE_ARCV1) {
+            /* Same as above; version <= 3 means a fixed 4-way D-cache. */
+            reg = (2 << 16)   /* line size: 16 << 2 = 64 bytes */
+                | (6 << 12)   /* capacity:  1 << (6 - 1) = 32 KB */
+                | (2 << 8)    /* config: fixed 4-way on version <= 3 */
+                | (3 << 0);   /* version: ARCompact */
+            break;
+        }
         reg = (2 << 20) | /* FL */
               (2 << 16) | /* BSize */
               (7 << 12) | /* Cache capacity */
