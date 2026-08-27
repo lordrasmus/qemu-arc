@@ -548,6 +548,13 @@ SEMANTIC_FUNCTION(TRAP, 1)
 SEMANTIC_FUNCTION(RTIE, 0)
 SEMANTIC_FUNCTION(SLEEP, 1)
 MAPPING(trap_s, TRAP, 1, 0)
+/*
+ * ARCompact's trap0 is the syscall instruction on ARC700 -- uClibc-ng and
+ * glibc both enter the kernel through it.  It carries no operand, so the
+ * trap number is supplied as a constant.
+ */
+MAPPING(trap0, TRAP, 1, 0)
+CONSTANT(TRAP, trap0, 0, 0)
 MAPPING(rtie, RTIE, 0)
 CONSTANT(SLEEP, sleep, 0, 0)
 MAPPING(sleep, SLEEP, 1, 0)
